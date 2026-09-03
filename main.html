@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Teachers’ Day — A Class Act</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EDDF; --paper2:#FBF7EC; --ink:#1C1710; --ink-soft:#4A4234;
+  --board:#26493A; --board-dark:#1C3A2D; --chalk:#F6F3E9;
+  --wood:#6B4A2C; --wood-dark:#4E361F;
+  --red:#C34A36; --green:#2F7A5B; --brass:#A9761F; --graphite:#4A5268;
+  --mono:'Space Mono',monospace; --serif:'Fraunces',serif; --hand:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);overflow-x:hidden}
+::selection{background:var(--board);color:var(--chalk)}
+/* paper grain over everything */
+body::after{content:"";position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase}
+h2{font-weight:600;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;margin:14px 0 10px;letter-spacing:-.01em}
+section{padding:110px 0}
+button{font:inherit;color:inherit}
+.lucide{width:1em;height:1em}
+
+/* ---------- progress pencil ---------- */
+#progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:600;pointer-events:none}
+#pfill{display:block;height:100%;width:0;background:var(--ink)}
+#ppencil{position:absolute;top:8px;left:0;transform:translateX(-14px);transition:left .12s linear;color:var(--ink)}
+#ppencil svg{width:17px;height:17px}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;
+  padding:13px 26px;background:rgba(243,237,223,.93);backdrop-filter:blur(7px);border-bottom:1.5px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-style:italic;font-size:1.05rem;text-decoration:none;color:var(--ink)}
+.brand svg{width:20px;height:20px;color:var(--red)}
+.brand small{font-family:var(--mono);font-style:normal;font-weight:400;font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
+.nav-links{display:flex;gap:26px}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--ink);position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--red);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- hero chalkboard ---------- */
+.board-wrap{padding:78px 18px 0}
+.board{position:relative;max-width:1240px;margin:0 auto;height:calc(100vh - 100px);min-height:580px;max-height:960px;
+  background:var(--board);border:13px solid var(--wood);border-radius:8px;box-shadow:0 24px 60px -20px rgba(28,23,16,.5), inset 0 0 130px rgba(0,0,0,.45);
+  cursor:none;user-select:none;touch-action:pan-y;overflow:hidden}
+.board::before{content:"";position:absolute;width:340px;height:130px;background:rgba(246,243,233,.05);filter:blur(26px);
+  transform:rotate(-7deg);top:18%;left:-40px;border-radius:50%}
+.board::after{content:"";position:absolute;width:300px;height:110px;background:rgba(246,243,233,.04);filter:blur(24px);
+  transform:rotate(5deg);bottom:24%;right:-30px;border-radius:50%}
+.board canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#chalk-canvas{z-index:4}
+#ghost-canvas{z-index:5}
+.board-inner{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:36px 22px 128px}
+.board-topline{font-family:var(--mono);font-size:10px;letter-spacing:3.5px;color:var(--chalk);opacity:.6;margin-bottom:30px}
+h1{font-family:var(--hand);color:var(--chalk);line-height:.98;font-weight:600;text-shadow:0 0 2px rgba(246,243,233,.4)}
+h1 .small{display:block;font-size:clamp(1.5rem,4vw,2.5rem);font-style:italic;opacity:.92}
+h1 .big{display:block;font-size:clamp(3.4rem,11vw,7.4rem)}
+h1 .ltr{display:inline-block;opacity:0;animation:chalkIn .55s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i)*.05s + .25s)}
+h1 .sp{display:inline-block;width:.32em}
+@keyframes chalkIn{from{opacity:0;transform:translateY(16px) rotate(6deg) scale(1.2);filter:blur(5px)}
+  to{opacity:1;transform:none;filter:blur(0)}}
+.board-sub{font-family:var(--hand);font-size:clamp(1.15rem,2.4vw,1.55rem);color:var(--chalk);opacity:.85;max-width:540px;margin-top:22px}
+.hint{display:flex;align-items:center;gap:9px;margin-top:30px;font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  color:var(--chalk);opacity:.6;border:1px dashed rgba(246,243,233,.35);padding:9px 15px;border-radius:4px}
+.hint svg{width:14px;height:14px}
+.formula{position:absolute;z-index:2;font-family:var(--hand);color:rgba(246,243,233,.32);font-size:clamp(1rem,2vw,1.5rem);
+  pointer-events:none;animation:floaty var(--dur,7s) ease-in-out infinite alternate;transform:rotate(var(--fr,0deg))}
+@keyframes floaty{to{translate:0 -16px}}
+@media(max-width:720px){.formula{display:none}}
+.tray{position:absolute;z-index:6;bottom:0;left:0;right:0;height:60px;background:var(--wood);border-top:5px solid var(--wood-dark);
+  display:flex;align-items:center;gap:16px;padding:0 22px;cursor:pointer}
+.tray-label{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--chalk);opacity:.75}
+.chalk-stick{width:52px;height:12px;border-radius:3px;border:none;background:var(--c);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18);
+  transform:rotate(-2deg);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.chalk-stick:hover{transform:rotate(-2deg) translateY(-3px)}
+.chalk-stick.active{transform:rotate(-2deg) translateY(-8px);box-shadow:0 6px 10px -3px rgba(0,0,0,.45), inset 0 -3px 0 rgba(0,0,0,.18)}
+.eraser{margin-left:auto;display:flex;align-items:center;gap:8px;background:#2E2A26;color:var(--chalk);border:2px solid #191512;
+  border-radius:4px;padding:8px 13px;font-family:var(--mono);font-size:10px;letter-spacing:2px;cursor:pointer;transition:transform .2s}
+.eraser:hover{transform:translateY(-3px)}
+.eraser svg{width:14px;height:14px}
+#chalk-cursor{position:absolute;z-index:7;width:34px;height:10px;border-radius:3px;background:var(--chalk);
+  pointer-events:none;opacity:0;transform:translate(-45%,-130%) rotate(-36deg);box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.scroll-cue{display:flex;justify-content:center;align-items:center;gap:10px;padding:20px 0 0;
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--ink-soft)}
+.scroll-cue svg{width:14px;height:14px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* ---------- marquee ---------- */
+.marquee{margin-top:64px;background:var(--board-dark);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);
+  padding:13px 0;overflow:hidden}
+.marquee-track{display:flex;align-items:center;gap:44px;width:max-content;animation:mq 26s linear infinite}
+.marquee-track span{color:var(--chalk);white-space:nowrap}
+.mq-hand{font-family:var(--hand);font-size:1.5rem}
+.mq-mono{font-family:var(--mono);font-size:10px;letter-spacing:3px;opacity:.85}
+.marquee-track svg{width:15px;height:15px;color:var(--chalk);opacity:.8;flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- intro ---------- */
+.intro{position:relative;text-align:center}
+.intro .lead{max-width:680px;margin:22px auto 0;font-size:1.12rem;line-height:1.75;color:var(--ink-soft)}
+.stat-line{margin-top:34px;font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--ink)}
+.stat-line b{color:var(--red)}
+.margin-note{position:absolute;right:2%;top:42%;font-family:var(--hand);font-size:1.35rem;color:var(--red);
+  transform:rotate(-6deg);text-align:center;line-height:1.1}
+.margin-note small{display:block;font-size:.95rem;opacity:.75}
+@media(max-width:960px){.margin-note{display:none}}
+.squig{display:block;margin:6px auto 0}
+.dp{will-change:stroke-dashoffset}
+
+/* ---------- elements ---------- */
+.elements-head{text-align:center;max-width:720px;margin:0 auto}
+.elements-sub{font-size:1.05rem;color:var(--ink-soft);line-height:1.65;margin-top:8px}
+.element-field{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:40px 30px;padding-top:56px}
+.element-card{width:min(278px,88vw);height:352px;perspective:1300px;transform:rotate(var(--rot));margin-top:var(--dy);
+  transition:transform .35s cubic-bezier(.2,.8,.3,1);cursor:pointer;touch-action:manipulation;position:relative}
+.element-card:hover{transform:rotate(calc(var(--rot)*.4)) translateY(-9px);z-index:3}
+.element-card::before{content:"";position:absolute;top:-13px;left:50%;width:92px;height:27px;z-index:2;
+  background:rgba(222,206,166,.68);transform:translateX(-50%) rotate(calc(var(--rot)*-1.4));
+  box-shadow:0 2px 4px rgba(28,23,16,.12)}
+.ec-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.35,.9,.3,1)}
+.element-card.flipped .ec-inner{transform:rotateY(180deg)}
+.ec-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1.5px solid var(--ink);
+  box-shadow:5px 6px 0 rgba(28,23,16,.14)}
+.ec-front{background:var(--paper2);border-top:9px solid var(--acc);padding:16px 18px;display:flex;flex-direction:column}
+.ec-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink-soft)}
+.ec-symbol{font-weight:900;font-size:62px;line-height:1;color:var(--acc);margin-top:8px}
+.ec-elname{font-style:italic;font-weight:500;font-size:1.15rem}
+.ec-div{border:none;border-top:1.5px dashed rgba(28,23,16,.3);margin:12px 0 10px}
+.ec-person{font-weight:600;font-size:1.08rem}
+.ec-chip{align-self:flex-start;margin-top:7px;font-family:var(--mono);font-size:8.5px;letter-spacing:2px;color:var(--acc);
+  border:1.5px solid var(--acc);border-radius:999px;padding:3px 9px}
+.ec-prop{font-family:var(--hand);font-size:1.08rem;line-height:1.3;color:var(--ink-soft);margin-top:auto}
+.ec-flip{display:flex;align-items:center;gap:6px;margin-top:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:2px;opacity:.5}
+.ec-flip svg{width:11px;height:11px}
+.ec-back{background:var(--acc);color:var(--paper2);transform:rotateY(180deg);padding:20px;display:flex;flex-direction:column}
+.ec-back .eb-top{font-family:var(--mono);font-size:8.5px;letter-spacing:2px;opacity:.8}
+.ec-msg{font-family:var(--hand);font-size:1.4rem;line-height:1.3;margin:auto 0}
+.ec-msg svg{width:16px;height:16px;vertical-align:-2px}
+.eb-bond{font-family:var(--mono);font-size:8.5px;letter-spacing:2px;opacity:.85;border-top:1px dashed rgba(251,247,236,.45);padding-top:10px}
+.field-note{text-align:center;margin-top:52px;font-family:var(--mono);font-size:9.5px;letter-spacing:2.5px;color:var(--ink-soft)}
+
+/* ---------- faculty ---------- */
+.faculty-head{text-align:center;max-width:700px;margin:0 auto}
+.dept{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;margin-top:110px}
+.dept.flip{grid-template-columns:1.15fr .85fr}
+.dept.flip .dept-side{order:2}
+.dept-side{text-align:center}
+.dept-num{font-weight:900;font-size:clamp(72px,9vw,124px);line-height:.85;color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+.mini-board{position:relative;margin:20px auto 0;max-width:380px;background:var(--board);border:11px solid var(--wood);
+  border-radius:5px;box-shadow:0 16px 34px -14px rgba(28,23,16,.5), inset 0 0 60px rgba(0,0,0,.35);overflow:hidden}
+.mini-board svg{display:block;width:100%;height:auto}
+.mb-caption{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--chalk);opacity:.65;padding:8px 0 10px;text-align:center}
+.chalk-draw .t{font-family:var(--hand);fill:var(--chalk);opacity:0;transition:opacity .9s ease .9s}
+.mini-board.in .chalk-draw .t{opacity:.85}
+.chalk-draw .t.big{font-family:var(--serif);font-weight:700}
+.dept-body h3{font-weight:600;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;margin:12px 0 14px}
+.dept-copy{color:var(--ink-soft);line-height:1.7;font-size:1.05rem;max-width:560px}
+.teacher-cards{display:flex;gap:20px;flex-wrap:wrap;margin-top:30px}
+.tcard{flex:1 1 290px;background:var(--paper2);border:1.5px solid var(--ink);box-shadow:5px 6px 0 rgba(28,23,16,.12);
+  padding:22px 22px 26px;position:relative}
+.tcard-head{display:flex;align-items:center;gap:14px}
+.avatar{width:52px;height:52px;flex:none;border-radius:50%;background:var(--board);border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;font-family:var(--hand);font-weight:700;font-size:1.25rem;color:var(--chalk)}
+.tcard h4{font-weight:600;font-size:1.25rem;line-height:1.1}
+.trole{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--red);margin-top:4px}
+.tnote{font-family:var(--hand);font-size:1.3rem;line-height:1.3;margin:16px 0 14px}
+.tfield{border-top:1.5px dashed rgba(28,23,16,.3);padding-top:12px}
+.tfield span{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:2.5px;color:var(--brass);margin-bottom:5px}
+.tfield p{font-style:italic;font-size:.95rem;color:var(--ink-soft);line-height:1.55}
+.tstamp{position:absolute;right:16px;bottom:14px;font-family:var(--mono);font-size:8px;letter-spacing:2px;
+  color:rgba(195,74,54,.85);border:2px solid rgba(195,74,54,.7);border-radius:3px;padding:4px 8px;transform:rotate(-7deg)}
+.duo-caption{margin-top:16px;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
+@media(max-width:900px){.dept,.dept.flip{grid-template-columns:1fr;gap:36px}.dept.flip .dept-side{order:0}}
+
+/* ---------- register ---------- */
+.register-head{text-align:center;max-width:640px;margin:0 auto}
+.reg-panel{position:relative;max-width:780px;margin:52px auto 0;background:var(--paper2);border:1.5px solid var(--ink);
+  box-shadow:7px 8px 0 rgba(28,23,16,.13)}
+.reg-panel::before{content:"";position:absolute;top:0;bottom:0;left:54px;width:1.5px;background:rgba(195,74,54,.45)}
+.reg-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:22px 24px 16px 66px;
+  border-bottom:2px solid var(--ink)}
+.reg-header .rh-t{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;line-height:2}
+.reg-header .rh-t b{font-size:12px;letter-spacing:3px}
+#full-stamp{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:3px;color:var(--red);
+  border:3px solid var(--red);border-radius:5px;padding:9px 15px;transform:rotate(-8deg) scale(2.2);opacity:0;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;white-space:nowrap}
+#full-stamp.show{opacity:1;transform:rotate(-8deg) scale(1)}
+.reg-hint{padding:12px 24px 4px 66px;font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--ink-soft)}
+.reg-row{display:grid;grid-template-columns:40px 1fr 140px 168px;align-items:center;width:100%;text-align:left;
+  padding:15px 20px 15px 66px;background:none;border:none;border-bottom:1px dashed rgba(28,23,16,.28);cursor:pointer;transition:background .2s}
+.reg-row:hover{background:rgba(28,23,16,.04)}
+.reg-row:last-of-type{border-bottom:none}
+.rno{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+.rname{font-weight:600;font-size:1.15rem}
+.rsub{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
+.rstatus{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.await{font-family:var(--mono);font-size:12px;opacity:.35}
+.tick{width:20px;height:20px;color:var(--green);opacity:0;transform:scale(.4);transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
+.tick path{stroke-dasharray:32;stroke-dashoffset:32}
+.stamp-p{display:none;font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:2px;color:var(--red);
+  border:2px solid var(--red);border-radius:4px;padding:4px 9px}
+.reg-row.present .tick{opacity:1;transform:scale(1)}
+.reg-row.present .tick path{transition:stroke-dashoffset .45s ease .1s;stroke-dashoffset:0}
+.reg-row.present .stamp-p{display:inline-block;animation:stampIn .4s cubic-bezier(.34,1.56,.64,1) both}
+.reg-row.present .await{display:none}
+@keyframes stampIn{0%{transform:scale(2.4) rotate(-16deg);opacity:0}60%{transform:scale(.92) rotate(-6deg);opacity:1}100%{transform:scale(1) rotate(-6deg)}}
+.reg-count{padding:18px 24px 8px 66px;font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--ink)}
+.reg-full-msg{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .5s;padding:0 24px 0 66px;
+  font-family:var(--hand);font-size:1.45rem;line-height:1.35;color:var(--green)}
+.reg-full-msg.show{max-height:140px;opacity:1;padding-bottom:26px}
+.reg-foot{padding:6px 24px 22px 66px;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
+@media(max-width:640px){.reg-row{grid-template-columns:34px 1fr auto;padding-left:58px}.rsub{display:none}
+  .reg-header,.reg-hint,.reg-count,.reg-full-msg,.reg-foot{padding-left:58px}}
+
+/* ---------- letter ---------- */
+.letter-sec .wrap{display:flex;flex-direction:column;align-items:center}
+.letter-card{position:relative;max-width:660px;background:#FFFDF6;border:1.5px solid var(--ink);box-shadow:8px 9px 0 rgba(28,23,16,.13);
+  padding:52px 54px 46px;transform:rotate(-.6deg);margin-top:52px}
+.lstamp{position:absolute;top:20px;right:22px;border:2px dashed var(--ink);padding:9px 12px;text-align:center;transform:rotate(4deg)}
+.lstamp svg{width:22px;height:22px;display:block;margin:0 auto 4px;color:var(--red)}
+.lstamp i{font-style:normal;font-family:var(--mono);font-size:7px;letter-spacing:1.5px;display:block;line-height:1.7;color:var(--ink-soft)}
+.lsalutation{font-family:var(--hand);font-size:2.1rem;margin-bottom:18px}
+.letter-card p{line-height:1.75;color:#332C21;margin-bottom:16px;font-size:1.02rem}
+.lclose{font-family:var(--hand);font-size:1.5rem;margin-top:26px}
+.sig-area{margin-top:14px;min-height:64px;position:relative}
+#sig-name{font-family:var(--hand);font-size:2.3rem;font-weight:600;position:relative;z-index:2;padding:0 8px;display:inline-block}
+#sig-name.empty{opacity:.28;font-style:italic;font-size:1.5rem}
+.sig-flourish{position:absolute;left:-6px;bottom:2px;z-index:1}
+.sig-flourish path{stroke:var(--red)}
+.sealed{position:absolute;right:6px;bottom:14px;font-family:var(--mono);font-size:8.5px;letter-spacing:2px;color:var(--green);
+  border:2px solid var(--green);border-radius:3px;padding:5px 9px;transform:rotate(-7deg) scale(2);opacity:0;
+  transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.letter-card.signed .sealed{opacity:1;transform:rotate(-7deg) scale(1)}
+.sig-form{display:flex;gap:14px;align-items:flex-end;margin-top:36px;flex-wrap:wrap;justify-content:center}
+.sig-form input{font-family:var(--hand);font-size:1.4rem;background:transparent;border:none;border-bottom:2px solid var(--ink);
+  padding:6px 10px;width:min(280px,70vw);color:var(--ink);outline:none}
+.sig-form input::placeholder{color:rgba(28,23,16,.35)}
+.sig-form input:focus{border-bottom-color:var(--red)}
+.sig-form button{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper2);border:2px solid var(--ink);
+  padding:12px 22px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:background .2s,color .2s}
+.sig-form button:hover{background:transparent;color:var(--ink)}
+.sig-form button svg{width:14px;height:14px}
+.sig-err{width:100%;text-align:center;font-family:var(--hand);font-size:1.15rem;color:var(--red);min-height:1.4em;margin-top:6px}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+#sealed-note{display:none;align-items:center;gap:9px;margin-top:36px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;color:var(--green)}
+#sealed-note svg{width:15px;height:15px}
+.grat{margin-top:64px;text-align:center}
+#grat-btn{display:inline-flex;align-items:center;gap:12px;background:var(--red);color:var(--paper2);border:2px solid var(--red);
+  padding:18px 34px;font-family:var(--mono);font-size:12px;letter-spacing:3px;cursor:pointer;border-radius:2px;
+  transition:transform .2s,background .2s,color .2s;box-shadow:4px 5px 0 rgba(28,23,16,.2)}
+#grat-btn:hover{transform:translateY(-3px);background:var(--ink);border-color:var(--ink)}
+#grat-btn svg{width:17px;height:17px}
+#grat-count{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+footer{margin-top:110px;background:var(--board-dark);border-top:3px solid var(--ink);text-align:center;padding:48px 24px}
+footer .f-hand{font-family:var(--hand);font-size:1.7rem;color:var(--chalk)}
+footer .f-names{margin-top:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:2.5px;color:var(--chalk);opacity:.75;line-height:2.1}
+footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-spacing:2px;color:var(--chalk);opacity:.5}
+
+/* ---------- reveals ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+#confetti{position:fixed;inset:0;z-index:950;pointer-events:none}
+</style>
+</head>
+<body>
+
+<div id="progress"><span id="pfill"></span><span id="ppencil"><i data-lucide="pencil"></i></span></div>
+
+<nav>
+  <a class="brand" href="#top"><i data-lucide="graduation-cap"></i>A Class Act <small>· TEACHERS’ DAY</small></a>
+  <div class="nav-links">
+    <a href="#elements">The Elements</a>
+    <a href="#faculty">The Faculty</a>
+    <a href="#register">The Register</a>
+    <a href="#letter">Sign the Card</a>
+  </div>
+</nav>
+
+<!-- ============ HERO CHALKBOARD ============ -->
+<header class="board-wrap" id="top">
+  <div class="board" id="board">
+    <canvas id="chalk-canvas"></canvas>
+    <canvas id="ghost-canvas"></canvas>
+
+    <div class="formula" style="top:11%;left:5%;--fr:-6deg;--dur:8s">E = mc²</div>
+    <div class="formula" style="top:20%;right:6%;--fr:4deg;--dur:6.5s">a² + b² = c²</div>
+    <div class="formula" style="top:56%;left:3.5%;--fr:3deg;--dur:9s">F = ma</div>
+    <div class="formula" style="top:70%;right:5%;--fr:-5deg;--dur:7s">π ≈ 3.14159</div>
+    <div class="formula" style="bottom:22%;left:9%;--fr:2deg;--dur:8.5s">x = (−b ± √Δ) / 2a</div>
+    <div class="formula" style="top:9%;right:11%;--fr:-3deg;--dur:7.5s">Na + Cl → NaCl</div>
+    <div class="formula" style="bottom:26%;right:9%;--fr:5deg;--dur:6s">9.8 m/s²</div>
+    <div class="formula" style="top:46%;left:12%;--fr:-4deg;--dur:10s">“Read. Dream. Repeat.”</div>
+
+    <div class="board-inner">
+      <div class="board-topline">CLASSROOM 12-B &nbsp;·&nbsp; PERIOD: GRATITUDE &nbsp;·&nbsp; NO HOMEWORK TODAY</div>
+      <h1 id="headline">
+        <span class="small">Happy</span>
+        <span class="big">Teachers’ Day</span>
+      </h1>
+      <p class="board-sub">To the six people who never gave up on us — even on the days we gave up on ourselves.</p>
+      <div class="hint"><i data-lucide="pencil-line"></i>PSST — PICK A CHALK FROM THE TRAY &amp; ACTUALLY WRITE ON THIS BOARD</div>
+    </div>
+
+    <div class="tray" id="tray">
+      <span class="tray-label">CHALK:</span>
+      <button class="chalk-stick active" data-color="#F6F3E9" style="--c:#F6F3E9" title="White chalk" aria-label="White chalk"></button>
+      <button class="chalk-stick" data-color="#F2D06B" style="--c:#F2D06B" title="Yellow chalk" aria-label="Yellow chalk"></button>
+      <button class="chalk-stick" data-color="#F0A8B8" style="--c:#F0A8B8" title="Pink chalk" aria-label="Pink chalk"></button>
+      <button class="chalk-stick" data-color="#9CC3D5" style="--c:#9CC3D5" title="Blue chalk" aria-label="Blue chalk"></button>
+      <button class="eraser" id="eraser-btn"><i data-lucide="eraser"></i>ERASE BOARD</button>
+    </div>
+    <div id="chalk-cursor"></div>
+  </div>
+  <div class="scroll-cue">SCROLL FOR TODAY’S TIMETABLE <i data-lucide="arrow-down"></i></div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track" id="mq-track">
+    <span class="mq-hand">Happy Teachers’ Day</span><i data-lucide="sparkles"></i>
+    <span class="mq-mono">THANK YOU</span><i data-lucide="sparkles"></i>
+    <span class="mq-hand">धन्यवाद</span><i data-lucide="sparkles"></i>
+    <span class="mq-mono">YOU SHAPED US</span><i data-lucide="sparkles"></i>
+    <span class="mq-hand">our favourite period was always yours</span><i data-lucide="sparkles"></i>
+    <span class="mq-mono">GRATITUDE LEVEL: 100%</span><i data-lucide="sparkles"></i>
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap reveal">
+    <div class="kicker">— a note from the back benchers</div>
+    <h2>Some lessons never appear<br>on the syllabus.</h2>
+    <svg class="squig dscope" viewBox="0 0 220 14" width="190" height="14" aria-hidden="true">
+      <path class="dp" d="M4 9 C 30 2, 55 13, 82 8 S 135 3, 162 9 S 205 12, 216 6" fill="none" stroke="#C34A36" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <p class="lead">Patience. Second chances. The quiet belief that we could do better — and the stubbornness to stay in the room until we did. Nobody graded them on it, but our teachers taught these every single day. This page is our homework, handed in with love.</p>
+    <div class="stat-line">6 TEACHERS &nbsp;·&nbsp; 4 SUBJECTS &nbsp;·&nbsp; <b>∞ PATIENCE</b> &nbsp;·&nbsp; 0 LATE-GRADING EXCUSES</div>
+  </div>
+  <div class="margin-note" aria-hidden="true">checked ✓<small>— very true, see me after class</small></div>
+</section>
+
+<!-- ============ ELEMENTS ============ -->
+<section id="elements">
+  <div class="wrap">
+    <div class="elements-head reveal">
+      <div class="kicker">— the periodic table, class edition</div>
+      <h2>The Elements of Our Classroom</h2>
+      <p class="elements-sub">Six essential elements. Perfectly stable under pressure, highly reactive to curiosity, and found in abundance in every period we shared. <strong>Click any element</strong> to read the bond it shares with us.</p>
+    </div>
+
+    <div class="element-field">
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2.5deg;--dy:0px;--acc:#4A5268">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 01</span><span>mass: ∞ patience</span></div>
+            <div class="ec-symbol">Bl</div>
+            <div class="ec-elname">Bhagyium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Bhagya Lakshmi</div>
+            <span class="ec-chip">MATHEMATICS</span>
+            <div class="ec-prop">“Turns ‘I can’t do maths’ into ‘just one more problem, please’.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 01 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for teaching us that every problem has a solution — and for waiting, calmly, until we found it ourselves. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.8deg;--dy:26px;--acc:#A9761F;--d:.08s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 02</span><span>mass: boundless energy</span></div>
+            <div class="ec-symbol">Mk</div>
+            <div class="ec-elname">Muralium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Murali Krishna</div>
+            <span class="ec-chip">PHYSICS</span>
+            <div class="ec-prop">“Explains the laws of the universe — and still checks our notebooks.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 02 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for showing us that what goes up must come down — except our curiosity, which you only ever sent higher. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.4deg;--dy:8px;--acc:#A9761F;--d:.16s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 03</span><span>half-life: none</span></div>
+            <div class="ec-symbol">Ah</div>
+            <div class="ec-elname">Ahmedium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Ahmed</div>
+            <span class="ec-chip">PHYSICS</span>
+            <div class="ec-prop">“Makes you see physics everywhere — apples, bells, corridors.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 03 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for making the whole universe feel personal — and for proving that energy, like your dedication, never decays. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:2.4deg;--dy:22px;--acc:#2F7A5B;--d:.1s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 04</span><span>mass: steady &amp; calm</span></div>
+            <div class="ec-symbol">Sa</div>
+            <div class="ec-elname">Samarane</div>
+            <hr class="ec-div">
+            <div class="ec-person">Samarana</div>
+            <span class="ec-chip">CHEMISTRY</span>
+            <div class="ec-prop">“Bonds instantly with curious minds. Stable under exam pressure.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 04 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for showing us that the best reactions in life are the ones you create carefully, together. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2deg;--dy:4px;--acc:#2F7A5B;--d:.18s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 05</span><span>role: pure catalyst</span></div>
+            <div class="ec-symbol">Pr</div>
+            <div class="ec-elname">Pranithine</div>
+            <hr class="ec-div">
+            <div class="ec-person">Pranitha</div>
+            <span class="ec-chip">CHEMISTRY</span>
+            <div class="ec-prop">“Makes every class reaction faster, warmer and far more fun.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 05 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for turning the lab into our favourite period — and for trusting us with the good beakers. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.5deg;--dy:18px;--acc:#C34A36;--d:.26s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 06</span><span>state: fluent</span></div>
+            <div class="ec-symbol">Su</div>
+            <div class="ec-elname">Sumium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Suma</div>
+            <span class="ec-chip">ENGLISH</span>
+            <div class="ec-prop">“Hands you words big enough to hold everything you feel.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 06 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for giving us a voice — and then teaching us to use it kindly. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field-note reveal">ALL ELEMENTS LISTED HERE ARE STABLE, NOBLE, AND EXTREMELY GOOD-HUMOURED.</div>
+  </div>
+</section>
+
+<!-- ============ FACULTY ============ -->
+<section id="faculty" style="padding-top:40px">
+  <div class="wrap">
+    <div class="faculty-head reveal">
+      <div class="kicker">— faculty profiles</div>
+      <h2>Department Heads<br>of Our Hearts</h2>
+    </div>
+
+    <!-- 01 MATHEMATICS -->
+    <article class="dept">
+      <div class="dept-side reveal">
+        <div class="dept-num">01</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M110 105 m-70 0 a70 70 0 1 0 140 0 a70 70 0 1 0 -140 0"/>
+            <path class="dp" d="M110 105 L159 56"/>
+            <path class="dp" d="M210 190 L300 190 L300 110 Z"/>
+            <text class="t" x="126" y="78" font-size="24">r</text>
+            <text class="t" x="196" y="232" font-size="20">a² + b² = c²</text>
+            <text class="t" x="24" y="226" font-size="26">π</text>
+          </svg>
+          <div class="mb-caption">fig. i — the only circle we never minded</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 01 · MATHEMATICS</div>
+        <h3>Where every problem meets its patient match.</h3>
+        <p class="dept-copy">Some people fear numbers. Our maths class learned to befriend them instead. Every “wrong” answer was treated as a step, never a stumble — and somehow, by June, the whole class was raising its hands just for the joy of trying.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">BL</div>
+              <div><h4>Bhagya Lakshmi</h4><div class="trole">MATHEMATICS</div></div>
+            </div>
+            <p class="tnote">“Thank you for teaching us that every problem has a solution — and for waiting, calmly, until we found it ourselves.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Has never once said “this is easy” — only “you’ll get it.” Solves everything on the board except the mystery of where all our pens go.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 PHYSICS -->
+    <article class="dept flip">
+      <div class="dept-side reveal">
+        <div class="dept-num">02</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M105 95 C75 95 55 125 60 160 C65 195 88 215 105 215 C122 215 145 195 150 160 C155 125 135 95 105 95"/>
+            <path class="dp" d="M105 92 C107 80 112 72 120 66"/>
+            <path class="dp" d="M120 70 C135 58 152 62 157 74 C144 83 127 81 120 70"/>
+            <g transform="translate(240,120)">
+              <path class="dp" d="M-55 0 a55 20 0 1 0 110 0 a55 20 0 1 0 -110 0"/>
+              <ellipse class="dp" rx="55" ry="20" transform="rotate(60)"/>
+              <ellipse class="dp" rx="55" ry="20" transform="rotate(-60)"/>
+              <circle class="dp" r="6" fill="#F6F3E9"/>
+              <circle class="dp" cx="55" cy="0" r="3.5" fill="#F6F3E9"/>
+              <circle class="dp" cx="-27" cy="-47" r="3.5" fill="#F6F3E9"/>
+            </g>
+            <text class="t" x="34" y="52" font-size="20">g = 9.8 m/s²</text>
+          </svg>
+          <div class="mb-caption">fig. ii — forces we’re grateful for</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 02 · PHYSICS</div>
+        <h3>Making the universe feel personal.</h3>
+        <p class="dept-copy">Gravity, electricity, momentum — they explained the laws that run the universe, then quietly demonstrated the most important one themselves: dedication never loses energy.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">MK</div>
+              <div><h4>Murali Krishna</h4><div class="trole">PHYSICS</div></div>
+            </div>
+            <p class="tnote">“Thank you for showing us that what goes up must come down — except our curiosity, which you only ever sent higher.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Has personally re-verified gravity more times than any scientist alive. Usually with our chalk.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">AH</div>
+              <div><h4>Ahmed</h4><div class="trole">PHYSICS</div></div>
+            </div>
+            <p class="tnote">“Thank you for making us see physics in everything — falling apples, ringing bells, and exactly why we shouldn’t run in the corridor.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Explains the entire universe before lunch and still has time to check every single notebook.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+        <div class="duo-caption">* TOGETHER THEY PROVE MOMENTUM IS CONSERVED — WHEN ONE THROWS A QUESTION, THE OTHER CATCHES IT.</div>
+      </div>
+    </article>
+
+    <!-- 03 CHEMISTRY -->
+    <article class="dept">
+      <div class="dept-side reveal">
+        <div class="dept-num">03</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M135 55 L135 115 L98 195 C93 208 101 220 115 220 L205 220 C219 220 227 208 222 195 L185 115 L185 55"/>
+            <path class="dp" d="M123 55 L197 55"/>
+            <path class="dp" d="M106 187 Q118 179 130 187 Q142 195 154 187 Q166 179 178 187 Q190 195 202 190"/>
+            <circle class="dp" cx="150" cy="160" r="4"/>
+            <circle class="dp" cx="166" cy="140" r="3"/>
+            <circle class="dp" cx="140" cy="134" r="2.5"/>
+            <g transform="translate(262,110)">
+              <path class="dp" d="M0 -34 L29 -17 L29 17 L0 34 L-29 17 L-29 -17 Z"/>
+              <circle class="dp" r="18"/>
+            </g>
+            <text class="t" x="26" y="240" font-size="20">NaCl + H₂O</text>
+          </svg>
+          <div class="mb-caption">fig. iii — chemistry we can’t replicate</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 03 · CHEMISTRY</div>
+        <h3>The reaction we never want to end.</h3>
+        <p class="dept-copy">They taught us that chemistry isn’t only about what happens in beakers — it’s about the bonds you build, the catalysts you become, and never, ever pointing the test tube at anyone.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">SA</div>
+              <div><h4>Samarana</h4><div class="trole">CHEMISTRY</div></div>
+            </div>
+            <p class="tnote">“Thank you for showing us the best reactions in life are the ones you create carefully, together.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Bonds instantly with curious minds. Extremely stable under exam pressure.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">PR</div>
+              <div><h4>Pranitha</h4><div class="trole">CHEMISTRY</div></div>
+            </div>
+            <p class="tnote">“Thank you for turning the lab into our favourite period — and for trusting us with the good beakers.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>A true catalyst: makes every class reaction faster, warmer, and better — without ever changing herself.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+        <div class="duo-caption">* BETWEEN THEM, THEY HAVE NEUTRALISED EVERY FEAR OF THE LAB.</div>
+      </div>
+    </article>
+
+    <!-- 04 ENGLISH -->
+    <article class="dept flip">
+      <div class="dept-side reveal">
+        <div class="dept-num">04</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M40 120 C75 100 115 100 152 122 C189 100 229 100 264 120 L264 196 C229 178 189 178 152 200 C115 178 75 178 40 196 Z"/>
+            <path class="dp" d="M152 122 L152 200"/>
+            <path class="dp" d="M62 142 C90 130 112 130 136 140"/>
+            <path class="dp" d="M62 164 C90 152 112 152 136 162"/>
+            <path class="dp" d="M168 140 C192 130 214 130 242 142"/>
+            <path class="dp" d="M168 162 C192 152 214 152 242 164"/>
+            <text class="t big" x="42" y="96" font-size="76">“</text>
+            <text class="t big" x="238" y="242" font-size="76">”</text>
+            <text class="t" x="266" y="72" font-size="26" transform="rotate(8 266 72)">a</text>
+            <text class="t" x="288" y="98" font-size="24" transform="rotate(-6 288 98)">b</text>
+          </svg>
+          <div class="mb-caption">fig. iv — our favourite plot twist</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 04 · ENGLISH</div>
+        <h3>Grammar on Monday, courage on Friday.</h3>
+        <p class="dept-copy">They handed us words big enough to hold everything we feel — and taught us the first great sentence every student should master: <em>thank you</em>.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">SU</div>
+              <div><h4>Suma</h4><div class="trole">ENGLISH</div></div>
+            </div>
+            <p class="tnote">“Thank you for giving us a voice — and then teaching us to use it kindly.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Can find the perfect word for any feeling, including the ones we couldn’t name yet.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ REGISTER ============ -->
+<section id="register" style="padding-top:40px">
+  <div class="wrap">
+    <div class="register-head reveal">
+      <div class="kicker">— the daily register, reversed</div>
+      <h2>Today, We Mark <em>Them</em> Present</h2>
+      <p class="elements-sub" style="margin-top:10px">They took our attendance every single morning and never once gave up on a name. Today the register is ours.</p>
+    </div>
+
+    <div class="reg-panel reveal" id="reg-panel">
+      <div class="reg-header">
+        <div class="rh-t"><b>GOVT. MODEL HIGH SCHOOL — CLASS: GRATITUDE</b><br>SUBJECT: EVERYTHING · DATE: TODAY, THE DAY THAT MATTERS</div>
+        <div id="full-stamp">FULL ATTENDANCE</div>
+      </div>
+      <div class="reg-hint">· TAP A NAME TO MARK THEM PRESENT ·</div>
+      <div id="reg-rows"></div>
+      <div class="reg-count" id="reg-count">PRESENT: 0 / 6</div>
+      <div class="reg-full-msg" id="reg-full-msg">Six teachers. Always present, every single day. Today, the least we could do was show up for them. — Class dismissed? Never.</div>
+      <div class="reg-foot">NO TEACHER WAS EVER MARKED ABSENT FROM OUR LIVES. NOT ONCE.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LETTER ============ -->
+<section id="letter" class="letter-sec" style="padding-top:40px">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <div class="kicker">— one card, signed by all of us</div>
+      <h2>The Thank-You Card</h2>
+    </div>
+
+    <div class="letter-card reveal" id="letter-card" style="--d:.1s">
+      <div class="lstamp"><i data-lucide="graduation-cap"></i><i>GRATITUDE<br>POST · FIRST<br>CLASS</i></div>
+      <div class="lsalutation">Dear Teachers,</div>
+      <p>We spent years trying to find the right answers. You spent years showing us that the questions mattered more.</p>
+      <p>For every extra minute after the bell. For every “try again, you’re close.” For every time you believed in us before we knew how to believe in ourselves — thank you.</p>
+      <p>A day, a card, a whole website — none of it is truly enough. But it’s honest, it’s heartfelt, and it’s entirely in our own words. We think you’d like that.</p>
+      <div class="lclose">With love and gratitude,</div>
+      <div class="sig-area">
+        <span id="sig-name" class="empty">(sign above the line)</span>
+        <svg class="sig-flourish dscope" width="250" height="18" viewBox="0 0 250 18" aria-hidden="true">
+          <path class="dp" d="M4 12 C 40 4, 74 16, 112 10 S 186 5, 246 12" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div class="sealed">SEALED WITH GRATITUDE</div>
+      </div>
+    </div>
+
+    <form class="sig-form reveal" id="sig-form" style="--d:.2s" novalidate>
+      <input type="text" id="sig-input" placeholder="write your name here" maxlength="30" autocomplete="off">
+      <button type="submit" id="sig-btn"><i data-lucide="feather"></i>SIGN THE CARD</button>
+      <div class="sig-err" id="sig-err"></div>
+    </form>
+    <div id="sealed-note"><i data-lucide="check"></i>SIGNED &amp; SEALED — YOUR NAME IS NOW PART OF THIS DAY.</div>
+
+    <div class="grat reveal" style="--d:.15s">
+      <button id="grat-btn"><i data-lucide="sparkles"></i><span id="grat-label">SHOWER THEM WITH APPRECIATION</span></button>
+      <div id="grat-count">GRATITUDE LEVEL: 0%</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-hand">No homework was assigned in the making of this page.</div>
+  <div class="f-names">BHAGYA LAKSHMI · MURALI KRISHNA · AHMED · SAMARANA · PRANITHA · SUMA</div>
+  <div class="f-small">HAPPY TEACHERS’ DAY — CLASS DISMISSED, BUT NEVER FORGOTTEN.</div>
+</footer>
+
+<canvas id="confetti"></canvas>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+"use strict";
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+/* ---------- headline: chalk letter-by-letter ---------- */
+ $$('#headline .small, #headline .big').forEach(function(line){
+  var text = line.textContent, i = 0, out = '';
+  text.split('').forEach(function(ch){
+    if(ch === ' '){ out += '<span class="sp"></span>'; }
+    else { out += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>'; }
+  });
+  line.innerHTML = out;
+});
+
+/* ---------- marquee: duplicate for seamless loop ---------- */
+var mq = $('#mq-track');
+mq.innerHTML += mq.innerHTML;
+
+/* ---------- reveal on scroll ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.15});
+ $$('.reveal').forEach(function(el){ io.observe(el); });
+
+/* ---------- chalk-draw SVGs: prepare & animate on view ---------- */
+function prepareDraw(svg){
+  var paths = svg.querySelectorAll('.dp');
+  paths.forEach(function(p, i){
+    try{
+      var L = p.getTotalLength();
+      p.style.strokeDasharray = L;
+      p.style.strokeDashoffset = L;
+      p.style.transition = 'stroke-dashoffset 1.25s ease ' + (i * 0.18) + 's';
+    }catch(err){}
+  });
+}
+var drawIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    var scope = e.target;
+    scope.classList.add('in');
+    scope.querySelectorAll('.dp').forEach(function(p){ p.style.strokeDashoffset = 0; });
+    drawIO.unobserve(scope);
+  });
+},{threshold:.4});
+ $$('.dscope').forEach(function(s){ prepareDraw(s); drawIO.observe(s); });
+
+/* ---------- element card flipping ---------- */
+ $$('.element-card').forEach(function(card){
+  function flip(){ card.classList.toggle('flipped'); }
+  card.addEventListener('click', flip);
+  card.addEventListener('keydown', function(ev){
+    if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); flip(); }
+  });
+});
+
+/* ---------- confetti engine (chalk dust + paper + hearts) ---------- */
+var cCanvas = $('#confetti'), cctx = cCanvas.getContext('2d');
+var parts = [], cRunning = false;
+var PALETTE = ['#C34A36','#2F7A5B','#A9761F','#4A5268','#F6F3E9','#E8C87E'];
+function sizeConfetti(){
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cCanvas.width = window.innerWidth * dpr;
+  cCanvas.height = window.innerHeight * dpr;
+  cctx.setTransform(dpr,0,0,dpr,0,0);
+}
+sizeConfetti();
+window.addEventListener('resize', sizeConfetti);
+function drawHeart(s){
+  cctx.beginPath();
+  cctx.moveTo(0, s*0.25);
+  cctx.bezierCurveTo(-s*0.5, -s*0.35, -s*1.1, s*0.25, 0, s);
+  cctx.bezierCurveTo(s*1.1, s*0.25, s*0.5, -s*0.35, 0, s*0.25);
+  cctx.closePath(); cctx.fill();
+}
+function burst(x, y, n, hearts){
+  for(var i=0;i<n;i++){
+    var r = Math.random();
+    parts.push({
+      x:x, y:y,
+      vx:(Math.random()-.5)*9, vy:-4 - Math.random()*7,
+      rot:Math.random()*6.28, vr:(Math.random()-.5)*.35,
+      size:4 + Math.random()*6,
+      color:PALETTE[(Math.random()*PALETTE.length)|0],
+      shape: hearts && r < .4 ? 'heart' : (r < .5 ? 'rect' : 'circle'),
+      life:1
+    });
+  }
+  if(!cRunning){ cRunning = true; requestAnimationFrame(confettiLoop); }
+}
+function confettiLoop(){
+  cctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+  parts = parts.filter(function(p){ return p.life > 0 && p.y < window.innerHeight + 40; });
+  parts.forEach(function(p){
+    p.vy += .13; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life -= .008;
+    cctx.save();
+    cctx.translate(p.x, p.y); cctx.rotate(p.rot);
+    cctx.globalAlpha = Math.max(0, p.life);
+    cctx.fillStyle = p.color;
+    if(p.shape === 'rect'){ cctx.fillRect(-p.size/2, -p.size/3, p.size, p.size*.66); }
+    else if(p.shape === 'circle'){ cctx.beginPath(); cctx.arc(0,0,p.size*.4,0,6.29); cctx.fill(); }
+    else { drawHeart(p.size*.9); }
+    cctx.restore();
+  });
+  if(parts.length){ requestAnimationFrame(confettiLoop); } else { cRunning = false; cctx.clearRect(0,0,window.innerWidth,window.innerHeight); }
+}
+
+/* ---------- attendance register ---------- */
+var TEACHERS = [
+  {no:'01', name:'Bhagya Lakshmi', sub:'MATHEMATICS'},
+  {no:'02', name:'Murali Krishna', sub:'PHYSICS'},
+  {no:'03', name:'Ahmed',          sub:'PHYSICS'},
+  {no:'04', name:'Samarana',       sub:'CHEMISTRY'},
+  {no:'05', name:'Pranitha',       sub:'CHEMISTRY'},
+  {no:'06', name:'Suma',           sub:'ENGLISH'}
+];
+var rowsEl = $('#reg-rows');
+TEACHERS.forEach(function(t){
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'reg-row';
+  b.innerHTML =
+    '<span class="rno">' + t.no + '</span>' +
+    '<span class="rname">' + t.name + '</span>' +
+    '<span class="rsub">' + t.sub + '</span>' +
+    '<span class="rstatus">' +
+      '<svg class="tick" viewBox="0 0 24 24"><path d="M4 12.5 L10 18.5 L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<span class="stamp-p">PRESENT</span>' +
+      '<span class="await">—</span>' +
+    '</span>';
+  b.addEventListener('click', function(){ togglePresent(b); });
+  rowsEl.appendChild(b);
+});
+var countEl = $('#reg-count'), fullMsg = $('#reg-full-msg'), fullStamp = $('#full-stamp');
+function togglePresent(row){
+  var wasFull = $$('.reg-row.present').length === 6;
+  row.classList.toggle('present');
+  var n = $$('.reg-row.present').length;
+  countEl.textContent = 'PRESENT: ' + n + ' / 6';
+  if(n === 6 && !wasFull){
+    var rect = $('#reg-panel').getBoundingClientRect();
+    burst(rect.left + rect.width/2, rect.top + rect.height*.35, 110, true);
+    fullMsg.classList.add('show');
+    fullStamp.classList.add('show');
+  } else if(n < 6){
+    fullMsg.classList.remove('show');
+    fullStamp.classList.remove('show');
+  }
+}
+
+/* ---------- signature ---------- */
+var sigForm = $('#sig-form'), sigInput = $('#sig-input'), sigErr = $('#sig-err');
+sigForm.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var name = sigInput.value.trim();
+  if(!name){
+    sigErr.textContent = 'Every card needs a name — yours.';
+    sigInput.classList.add('shake');
+    setTimeout(function(){ sigInput.classList.remove('shake'); }, 450);
+    return;
+  }
+  sigErr.textContent = '';
+  var sig = $('#sig-name');
+  sig.textContent = name;
+  sig.classList.remove('empty');
+  $('#letter-card').classList.add('signed');
+  sigForm.style.display = 'none';
+  $('#sealed-note').style.display = 'flex';
+  var r = sig.getBoundingClientRect();
+  burst(r.left + r.width/2, r.top, 26, true);
+});
+
+/* ---------- gratitude shower ---------- */
+var g = 0, gratBtn = $('#grat-btn'), gratCount = $('#grat-count'), gratLabel = $('#grat-label');
+gratBtn.addEventListener('click', function(){
+  var first = g === 0;
+  g = Math.min(100, g + 8 + Math.floor(Math.random()*7));
+  var r = gratBtn.getBoundingClientRect();
+  burst(r.left + r.width/2, r.top + r.height/2, first ? 70 : (24 + g/3), true);
+  if(g >= 100){
+    gratCount.textContent = 'GRATITUDE LEVEL: OVERFLOWING — AND IT STILL WOULDN’T BE ENOUGH.';
+    gratLabel.textContent = 'SHOWER THEM AGAIN';
+    burst(r.left + r.width/2, r.top + r.height/2, 120, true);
+  } else {
+    gratCount.textContent = 'GRATITUDE LEVEL: ' + g + '%';
+  }
+});
+
+/* ---------- progress pencil ---------- */
+var pfill = $('#pfill'), ppencil = $('#ppencil');
+function updateProgress(){
+  var max = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+  pfill.style.width = (pct*100) + '%';
+  ppencil.style.left = (pct * window.innerWidth) + 'px';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+/* ---------- THE CHALKBOARD ---------- */
+var board = $('#board');
+var chalkC = $('#chalk-canvas'), gC = $('#ghost-canvas');
+var ctx = chalkC.getContext('2d'), gctx = gC.getContext('2d');
+var W = 0, H = 0, boardRect = null;
+var chalkColor = '#F6F3E9';
+var drawing = false, lastX = 0, lastY = 0;
+var ghostPts = [], dust = [];
+
+function sizeBoard(){
+  var r = board.getBoundingClientRect();
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = r.width; H = r.height;
+  [chalkC, gC].forEach(function(c){
+    c.width = W * dpr; c.height = H * dpr;
+    c.getContext('2d').setTransform(dpr,0,0,dpr,0,0);
+  });
+}
+sizeBoard();
+window.addEventListener('resize', sizeBoard);
+
+function getPos(e){
+  boardRect = board.getBoundingClientRect();
+  return { x: e.clientX - boardRect.left, y: e.clientY - boardRect.top };
+}
+function spawnDust(x, y, n, color){
+  for(var i=0;i<n;i++){
+    dust.push({ x:x + (Math.random()-.5)*6, y:y + (Math.random()-.5)*6,
+      vx:(Math.random()-.5)*.8, vy:.2 + Math.random()*.5,
+      life:1, size:.6 + Math.random()*1.6, color:color, grav:.03 });
+  }
+}
+function chalkStroke(x0,y0,x1,y1){
+  var d = Math.hypot(x1-x0, y1-y0), steps = Math.max(1, Math.floor(d/2));
+  for(var i=0;i<steps;i++){
+    var t = i/steps;
+    var x = x0 + (x1-x0)*t + (Math.random()-.5)*2;
+    var y = y0 + (y1-y0)*t + (Math.random()-.5)*2;
+    ctx.globalAlpha = .08 + Math.random()*.12;
+    ctx.fillStyle = chalkColor;
+    ctx.beginPath(); ctx.arc(x, y, 1 + Math.random()*1.6, 0, 6.29); ctx.fill();
+  }
+  ctx.globalAlpha = .6;
+  ctx.strokeStyle = chalkColor; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+  ctx.globalAlpha = 1;
+  if(Math.random() < .5) spawnDust(x1, y1, 1, chalkColor);
+}
+board.addEventListener('pointerdown', function(e){
+  if(!e.isPrimary) return;
+  var p = getPos(e);
+  drawing = true; lastX = p.x; lastY = p.y;
+  ctx.globalAlpha = .75; ctx.fillStyle = chalkColor;
+  ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 6.29); ctx.fill();
+  ctx.globalAlpha = 1;
+  spawnDust(p.x, p.y, 3, chalkColor);
+});
+board.addEventListener('pointermove', function(e){
+  var p = getPos(e);
+  /* custom chalk cursor */
+  var cur = $('#chalk-cursor');
+  cur.style.left = p.x + 'px'; cur.style.top = p.y + 'px';
+  var overTray = e.target.closest && e.target.closest('.tray');
+  cur.style.opacity = overTray ? 0 : 1;
+  if(drawing && e.isPrimary){
+    chalkStroke(lastX, lastY, p.x, p.y);
+    lastX = p.x; lastY = p.y;
+  } else if(e.pointerType === 'mouse' && !overTray){
+    ghostPts.push({x:p.x, y:p.y, life:1});
+    if(ghostPts.length > 130) ghostPts.shift();
+  }
+});
+['pointerup','pointercancel','pointerleave'].forEach(function(ev){
+  board.addEventListener(ev, function(){ drawing = false; });
+});
+
+/* chalk selection */
+ $$('.chalk-stick').forEach(function(stick){
+  stick.addEventListener('click', function(){
+    $$('.chalk-stick').forEach(function(s){ s.classList.remove('active'); });
+    stick.classList.add('active');
+    chalkColor = stick.dataset.color;
+    $('#chalk-cursor').style.background = chalkColor;
+  });
+});
+
+/* eraser sweep */
+ $('#eraser-btn').addEventListener('click', function(ev){
+  ev.stopPropagation();
+  var x = 0;
+  var sweep = setInterval(function(){
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    for(var y = 0; y < H; y += 28){
+      ctx.beginPath(); ctx.arc(x, y, 55, 0, 6.29); ctx.fill();
+    }
+    ctx.restore();
+    spawnDust(x, H * Math.random(), 2, 'rgba(246,243,233,1)');
+    x += W / 22;
+    if(x > W + 60) clearInterval(sweep);
+  }, 28);
+});
+
+/* animation loop: ghost trail + drifting chalk dust */
+var frame = 0;
+function loop(){
+  frame++;
+  gctx.clearRect(0, 0, W, H);
+  /* ghost trail */
+  ghostPts = ghostPts.filter(function(p){ return p.life > 0; });
+  ghostPts.forEach(function(p){
+    p.life -= .045;
+    gctx.globalAlpha = p.life * .1;
+    gctx.fillStyle = '#F6F3E9';
+    gctx.beginPath(); gctx.arc(p.x, p.y, 1.5 + 3*p.life, 0, 6.29); gctx.fill();
+  });
+  /* ambient dust */
+  if(frame % 34 === 0 && dust.length < 40){
+    dust.push({ x:Math.random()*W, y:-6, vx:(Math.random()-.5)*.25, vy:.12 + Math.random()*.22,
+      life:1, size:.5 + Math.random()*1.3, color:'#F6F3E9', grav:.0008 });
+  }
+  dust = dust.filter(function(p){ return p.life > 0 && p.y < H + 10; });
+  dust.forEach(function(p){
+    p.x += p.vx; p.y += p.vy; p.vy += p.grav; p.life -= .008;
+    gctx.globalAlpha = Math.max(0, p.life * .55);
+    gctx.fillStyle = p.color;
+    gctx.beginPath(); gctx.arc(p.x, p.y, p.size, 0, 6.29); gctx.fill();
+  });
+  gctx.globalAlpha = 1;
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* ---------- icons ---------- */
+if(window.lucide){ lucide.createIcons(); }
+})();
+</script>
+</body>
+</html>
