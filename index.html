@@ -14,7 +14,7 @@
   --wood:#6B4A2C; --wood-dark:#4E361F;
   --red:#C34A36; --green:#2F7A5B; --brass:#A9761F; --graphite:#4A5268;
   --indigo:#3E5C76; --sienna:#B0562F; --plum:#6B4E71; --maroon:#7A2E2E;
-  --fern:#4F7942;
+  --fern:#4F7942; --oxford:#2F4156;
   --gold:#B08A2E; --gold-bright:#E8C87E;
   --mono:'Space Mono',monospace; --serif:'Fraunces',serif; --hand:'Caveat',cursive;
 }
@@ -211,13 +211,14 @@ h1 .sp{display:inline-block;width:.32em}
   transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;white-space:nowrap}
 #full-stamp.show{opacity:1;transform:rotate(-8deg) scale(1)}
 .reg-hint{padding:12px 24px 4px 66px;font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--ink-soft)}
-.reg-row{display:grid;grid-template-columns:40px 1fr 180px 168px;align-items:center;width:100%;text-align:left;
+.reg-row{display:grid;grid-template-columns:40px 1fr 190px 168px;align-items:center;width:100%;text-align:left;
   padding:15px 20px 15px 66px;background:none;border:none;border-bottom:1px dashed rgba(28,23,16,.28);cursor:pointer;transition:background .2s}
 .reg-row:hover{background:rgba(28,23,16,.04)}
 .reg-row:last-of-type{border-bottom:none}
 .rno{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
 .rname{font-weight:600;font-size:1.15rem}
 .rsub{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft);white-space:nowrap}
+.reg-row.special .rsub{color:var(--gold)}
 .rstatus{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .await{font-family:var(--mono);font-size:12px;opacity:.35}
 .tick{width:20px;height:20px;color:var(--green);opacity:0;transform:scale(.4);transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
@@ -324,16 +325,17 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <div class="formula" style="bottom:44%;right:4%;--fr:-4deg;--dur:8s">ROI = Gratitude²</div>
     <div class="formula" style="top:41%;right:11%;--fr:-3deg;--dur:7s">mind &gt; matter</div>
     <div class="formula" style="bottom:13%;left:5%;--fr:4deg;--dur:7.5s">laps: ∞</div>
-    <div class="formula" style="top:79%;left:13.5%;--fr:-2deg;--dur:8s;color:rgba(232,200,126,.4)">12-B = 1 family</div>
+    <div class="formula" style="top:79%;left:13.5%;--fr:-2deg;--dur:8s;color:rgba(232,200,126,.4)">Innovators = 1 family</div>
     <div class="formula" style="bottom:14%;right:6%;--fr:-4deg;--dur:7s">C₆H₁₂O₆ + 6O₂ → gratitude</div>
+    <div class="formula" style="top:65%;right:13%;--fr:-3deg;--dur:8.5s">vision → action</div>
 
     <div class="board-inner">
-      <div class="board-topline">CLASSROOM 12-B &nbsp;·&nbsp; INCHARGE: MS. NISHA MATHEW &nbsp;·&nbsp; NO HOMEWORK TODAY</div>
+      <div class="board-topline">CLASS: XII-INNOVATORS &nbsp;·&nbsp; INCHARGE: MS. BHAGYA LAKSHMI &nbsp;·&nbsp; NO HOMEWORK TODAY</div>
       <h1 id="headline">
         <span class="small">Happy</span>
         <span class="big">Teachers’ Day</span>
       </h1>
-      <p class="board-sub">To the twelve people who never gave up on us — even on the days we gave up on ourselves.</p>
+      <p class="board-sub">To the thirteen people who never gave up on us — even on the days we gave up on ourselves.</p>
       <div class="hint"><i data-lucide="pencil-line"></i>PSST — PICK A CHALK FROM THE TRAY &amp; ACTUALLY WRITE ON THIS BOARD</div>
     </div>
 
@@ -358,8 +360,8 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <span class="mq-hand">धन्यवाद</span><i data-lucide="sparkles"></i>
     <span class="mq-mono">YOU SHAPED US</span><i data-lucide="sparkles"></i>
     <span class="mq-hand">our favourite period was always yours</span><i data-lucide="sparkles"></i>
-    <span class="mq-hand">led with love by Ms. Nisha Mathew</span><i data-lucide="sparkles"></i>
-    <span class="mq-mono">12 TEACHERS · ONE HEART</span><i data-lucide="sparkles"></i>
+    <span class="mq-hand">led with love by Bhagya ma’am</span><i data-lucide="sparkles"></i>
+    <span class="mq-mono">13 TEACHERS · ONE HEART</span><i data-lucide="sparkles"></i>
     <span class="mq-mono">GRATITUDE LEVEL: 100%</span><i data-lucide="sparkles"></i>
   </div>
 </div>
@@ -373,7 +375,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <path class="dp" d="M4 9 C 30 2, 55 13, 82 8 S 135 3, 162 9 S 205 12, 216 6" fill="none" stroke="#C34A36" stroke-width="3" stroke-linecap="round"/>
     </svg>
     <p class="lead">Patience. Second chances. The quiet belief that we could do better — and the stubbornness to stay in the room until we did. Nobody graded them on it, but our teachers taught these every single day. This page is our homework, handed in with love.</p>
-    <div class="stat-line">12 TEACHERS &nbsp;·&nbsp; 9 SUBJECTS &nbsp;·&nbsp; 1 INCHARGE &nbsp;·&nbsp; <b>∞ PATIENCE</b></div>
+    <div class="stat-line">13 TEACHERS &nbsp;·&nbsp; 10 SUBJECTS &nbsp;·&nbsp; 2 INCHARGES &nbsp;·&nbsp; <b>∞ PATIENCE</b></div>
   </div>
   <div class="margin-note" aria-hidden="true">checked ✓<small>— very true, see me after class</small></div>
 </section>
@@ -382,11 +384,11 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
 <section id="incharge" class="incharge-sec" style="padding-top:40px">
   <div class="wrap">
     <div class="incharge-head reveal">
-      <div class="kicker">— first among equals · with all our respect</div>
-      <h2>The One Who Holds<br>Grade XII Together</h2>
+      <div class="kicker">— our class incharge · with all our respect</div>
+      <h2>The One Who Holds<br>XII-Innovators Together</h2>
       <div class="nameplate">
-        <span class="np-name">MS. NISHA MATHEW</span>
-        <span class="np-role">CLASS INCHARGE · GRADE XII</span>
+        <span class="np-name">MS. BHAGYA LAKSHMI</span>
+        <span class="np-role">CLASS INCHARGE · XII-INNOVATORS</span>
       </div>
     </div>
 
@@ -394,33 +396,33 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="dept-side reveal">
         <div class="dept-num gold">★</div>
         <div class="mini-board dscope">
-          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#E8C87E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path class="dp" d="M160 40 L173 81 L217 81 L182 107 L195 149 L160 123 L125 149 L138 107 L103 81 L147 81 Z"/>
-            <path class="dp" d="M56 84 L56 100 M48 92 L64 92"/>
-            <path class="dp" d="M262 70 L262 84 M255 77 L269 77"/>
-            <path class="dp" d="M250 172 L258 164 M258 172 L250 164"/>
-            <circle class="dp" cx="70" cy="160" r="3" fill="#E8C87E"/>
-            <circle class="dp" cx="266" cy="120" r="2.5" fill="#E8C87E"/>
-            <path class="dp" d="M92 180 L92 210 L78 195 Z"/>
-            <path class="dp" d="M228 180 L228 210 L242 195 Z"/>
-            <rect class="dp" x="92" y="180" width="136" height="30"/>
-            <text class="t" x="160" y="201" font-size="19" text-anchor="middle" style="fill:#E8C87E">GRADE XII</text>
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M110 105 m-70 0 a70 70 0 1 0 140 0 a70 70 0 1 0 -140 0"/>
+            <path class="dp" d="M110 105 L159 56"/>
+            <path class="dp" d="M210 190 L300 190 L300 110 Z"/>
+            <text class="t" x="126" y="78" font-size="24">r</text>
+            <text class="t" x="196" y="232" font-size="20">a² + b² = c²</text>
+            <text class="t" x="24" y="226" font-size="26">π</text>
+            <g stroke="#E8C87E">
+              <path class="dp" d="M262 40 L268 58 L287 58 L272 69 L278 87 L262 76 L246 87 L252 69 L237 58 L256 58 Z"/>
+            </g>
+            <text class="t" x="160" y="30" font-size="16" text-anchor="middle" style="fill:#E8C87E">XII-INNOVATORS</text>
           </svg>
-          <div class="mb-caption">fig. 00 — our guiding star</div>
+          <div class="mb-caption">fig. i — our incharge, in her element</div>
         </div>
       </div>
       <div class="dept-body reveal" style="--d:.1s">
-        <div class="kicker" style="color:var(--gold)">★ PERIOD 00 · CLASS INCHARGE — GRADE XII</div>
-        <h3>Every class needs a captain. Ours got a guardian.</h3>
-        <p class="dept-copy">Behind every timetable, every result sheet and every school-morning scramble stood Ms. Nisha Mathew — first in, last out, keeper of every name and every excuse. She didn’t just manage 12-B. She believed in it — loudly, daily, and right up till the last bell.</p>
+        <div class="kicker" style="color:var(--gold)">★ PERIOD 01 · MATHEMATICS — &amp; OUR CLASS INCHARGE</div>
+        <h3>Where every problem meets its patient match.</h3>
+        <p class="dept-copy">Some people fear numbers. Our class learned to befriend them instead — every “wrong” answer was treated as a step, never a stumble. And long before the first bell each morning, she was already at our door: taking attendance, settling nerves, and holding XII-Innovators together like only she can.</p>
         <div class="teacher-cards">
           <div class="tcard">
             <div class="tcard-head">
-              <div class="avatar">NM</div>
-              <div><h4>Nisha Mathew</h4><div class="trole" style="color:var(--gold)">CLASS INCHARGE · GRADE XII</div></div>
+              <div class="avatar">BL</div>
+              <div><h4>Bhagya Lakshmi</h4><div class="trole" style="color:var(--gold)">MATHEMATICS · CLASS INCHARGE</div></div>
             </div>
-            <p class="tnote">“Thank you for running Grade XII like a family — firm when we needed direction, soft when we needed someone in our corner.”</p>
-            <div class="tfield"><span>FIELD NOTE</span><p>Knows every student by name, strength and sneeze. First to arrive, last to leave, and somehow never once missed a birthday.</p></div>
+            <p class="tnote">“Thank you for solving every problem twice — the ones on the board, and the ones walking into your classroom.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Has never once said “this is easy” — only “you’ll get it.” Knows every Innovator by name, strength and sneeze. First in, last out.</p></div>
             <div class="tstamp gold">OUR GUIDING STAR</div>
           </div>
         </div>
@@ -435,55 +437,35 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <div class="elements-head reveal">
       <div class="kicker">— the periodic table, class edition</div>
       <h2>The Elements of Our Classroom</h2>
-      <p class="elements-sub">Twelve essential elements — including the rare one that binds all the others together. Perfectly stable under pressure, highly reactive to curiosity, and found in abundance in every period we shared. <strong>Click any element</strong> to read the bond it shares with us.</p>
+      <p class="elements-sub">Thirteen essential elements — including the one who holds our class together. Perfectly stable under pressure, highly reactive to curiosity, and found in abundance in every period we shared. <strong>Click any element</strong> to read the bond it shares with us.</p>
     </div>
 
     <div class="element-field">
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1deg;--dy:0px;--acc:#1C1710">
-        <span class="ec-badge">★ THE INCHARGE</span>
+        <span class="ec-badge">★ CLASS INCHARGE</span>
         <div class="ec-inner">
           <div class="ec-face ec-front">
             <div class="ec-top"><span>No. 00</span><span>mass: all of us</span></div>
-            <div class="ec-symbol">Nm</div>
-            <div class="ec-elname">Nisharium</div>
-            <hr class="ec-div">
-            <div class="ec-person">Nisha Mathew</div>
-            <span class="ec-chip">CLASS INCHARGE · XII</span>
-            <div class="ec-prop">“The parent element — holds every other element in perfect orbit.”</div>
-            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
-          </div>
-          <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 00 — BINDS ALL OTHERS</div>
-            <div class="ec-msg">Thank you for keeping 12-B together — every schedule, every crisis, every celebration. Our class was never just a room; it was yours. <i data-lucide="heart"></i></div>
-            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2.5deg;--dy:20px;--acc:#4A5268;--d:.06s">
-        <div class="ec-inner">
-          <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 01</span><span>mass: ∞ patience</span></div>
             <div class="ec-symbol">Bl</div>
             <div class="ec-elname">Bhagyium</div>
             <hr class="ec-div">
             <div class="ec-person">Bhagya Lakshmi</div>
-            <span class="ec-chip">MATHEMATICS</span>
-            <div class="ec-prop">“Turns ‘I can’t do maths’ into ‘just one more problem, please’.”</div>
+            <span class="ec-chip">MATHEMATICS · INCHARGE</span>
+            <div class="ec-prop">“The parent element — solves for x, and for us, every single day.”</div>
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 01 — CERTIFIED ESSENTIAL</div>
-            <div class="ec-msg">Thank you for teaching us that every problem has a solution — and for waiting, calmly, until we found it ourselves. <i data-lucide="heart"></i></div>
+            <div class="eb-top">ELEMENT No. 00 — BINDS ALL OTHERS</div>
+            <div class="ec-msg">Thank you for holding XII-Innovators together — every schedule, every crisis, every celebration. Our class was never just a room; it was yours. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
         </div>
       </div>
 
-      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.8deg;--dy:26px;--acc:#A9761F;--d:.12s">
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.8deg;--dy:26px;--acc:#A9761F;--d:.06s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 02</span><span>mass: boundless energy</span></div>
+            <div class="ec-top"><span>No. 01</span><span>mass: boundless energy</span></div>
             <div class="ec-symbol">Mk</div>
             <div class="ec-elname">Muralium</div>
             <hr class="ec-div">
@@ -493,17 +475,17 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 02 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 01 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for showing us that what goes up must come down — except our curiosity, which you only ever sent higher. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
         </div>
       </div>
 
-      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.4deg;--dy:8px;--acc:#A9761F;--d:.18s">
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.4deg;--dy:8px;--acc:#A9761F;--d:.12s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 03</span><span>half-life: none</span></div>
+            <div class="ec-top"><span>No. 02</span><span>half-life: none</span></div>
             <div class="ec-symbol">Ah</div>
             <div class="ec-elname">Ahmedium</div>
             <hr class="ec-div">
@@ -513,7 +495,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 03 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 02 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for making the whole universe feel personal — and for proving that energy, like your dedication, never decays. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -523,7 +505,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:2.4deg;--dy:22px;--acc:#2F7A5B;--d:.1s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 04</span><span>mass: steady &amp; calm</span></div>
+            <div class="ec-top"><span>No. 03</span><span>mass: steady &amp; calm</span></div>
             <div class="ec-symbol">Sa</div>
             <div class="ec-elname">Samarane</div>
             <hr class="ec-div">
@@ -533,7 +515,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 04 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 03 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for showing us that the best reactions in life are the ones you create carefully, together. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -543,7 +525,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2deg;--dy:4px;--acc:#2F7A5B;--d:.16s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 05</span><span>role: pure catalyst</span></div>
+            <div class="ec-top"><span>No. 04</span><span>role: pure catalyst</span></div>
             <div class="ec-symbol">Pr</div>
             <div class="ec-elname">Pranithine</div>
             <hr class="ec-div">
@@ -553,7 +535,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 05 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 04 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for turning the lab into our favourite period — and for trusting us with the good beakers. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -563,7 +545,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.6deg;--dy:12px;--acc:#4F7942;--d:.2s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 06</span><span>state: living proof</span></div>
+            <div class="ec-top"><span>No. 05</span><span>state: living proof</span></div>
             <div class="ec-symbol">Ar</div>
             <div class="ec-elname">Archanium</div>
             <hr class="ec-div">
@@ -573,7 +555,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 06 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 05 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for teaching us that life, in every form, deserves our curiosity — and our care. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -583,7 +565,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.5deg;--dy:18px;--acc:#C34A36;--d:.26s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 07</span><span>state: fluent</span></div>
+            <div class="ec-top"><span>No. 06</span><span>state: fluent</span></div>
             <div class="ec-symbol">Su</div>
             <div class="ec-elname">Sumium</div>
             <hr class="ec-div">
@@ -593,7 +575,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 07 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 06 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for giving us a voice — and then teaching us to use it kindly. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -603,7 +585,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.8deg;--dy:14px;--acc:#3E5C76;--d:.1s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 08</span><span>compiles: always</span></div>
+            <div class="ec-top"><span>No. 07</span><span>compiles: always</span></div>
             <div class="ec-symbol">Rp</div>
             <div class="ec-elname">Rupalium</div>
             <hr class="ec-div">
@@ -613,7 +595,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 08 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 07 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for teaching us that every error is just information — read it, learn from it, run again. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -623,7 +605,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:2.2deg;--dy:0px;--acc:#B0562F;--d:.16s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 09</span><span>net worth: priceless</span></div>
+            <div class="ec-top"><span>No. 08</span><span>net worth: priceless</span></div>
             <div class="ec-symbol">Rj</div>
             <div class="ec-elname">Rajium</div>
             <hr class="ec-div">
@@ -633,7 +615,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 09 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 08 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for teaching us that failure is just data, and every enterprise begins with one brave question. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -643,7 +625,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2.4deg;--dy:20px;--acc:#6B4E71;--d:.22s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 10</span><span>state: deeply mindful</span></div>
+            <div class="ec-top"><span>No. 09</span><span>state: deeply mindful</span></div>
             <div class="ec-symbol">Sj</div>
             <div class="ec-elname">Sanjanium</div>
             <hr class="ec-div">
@@ -653,7 +635,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 10 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 09 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for teaching us to understand minds — starting with our own — and for always keeping your door open. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
@@ -663,7 +645,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.2deg;--dy:6px;--acc:#7A2E2E;--d:.28s">
         <div class="ec-inner">
           <div class="ec-face ec-front">
-            <div class="ec-top"><span>No. 11</span><span>energy: renewable</span></div>
+            <div class="ec-top"><span>No. 10</span><span>energy: renewable</span></div>
             <div class="ec-symbol">Sp</div>
             <div class="ec-elname">Suprium</div>
             <hr class="ec-div">
@@ -673,14 +655,54 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
             <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
           </div>
           <div class="ec-face ec-back">
-            <div class="eb-top">ELEMENT No. 11 — CERTIFIED ESSENTIAL</div>
+            <div class="eb-top">ELEMENT No. 10 — CERTIFIED ESSENTIAL</div>
             <div class="ec-msg">Thank you for teaching us that showing up is half the win — and for cheering loudest at our slowest mile. <i data-lucide="heart"></i></div>
             <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
           </div>
         </div>
       </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2deg;--dy:16px;--acc:#2F4156;--d:.12s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 11</span><span>heading: true north</span></div>
+            <div class="ec-symbol">Df</div>
+            <div class="ec-elname">Dermium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Dermot Farrell</div>
+            <span class="ec-chip">LEADERSHIP</span>
+            <div class="ec-prop">“Steers the whole school — and still learns our names.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 11 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for leading with an open door and a steady hand — and for treating our ideas like they mattered. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.5deg;--dy:24px;--acc:#B08A2E;--d:.18s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 12</span><span>mass: every section</span></div>
+            <div class="ec-symbol">Nm</div>
+            <div class="ec-elname">Nisharium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Nisha Mathew</div>
+            <span class="ec-chip">INCHARGE · GRADE XII</span>
+            <div class="ec-prop">“Looks after all of Grade XII — and still knows our section by heart.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 12 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for guiding all of Grade XII with steady care — we were lucky to be part of your watch. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="field-note reveal">ALL TWELVE ELEMENTS ARE STABLE, NOBLE &amp; EXTREMELY GOOD-HUMOURED. NO. 00 IS ALSO IN CHARGE.</div>
+    <div class="field-note reveal">ALL THIRTEEN ELEMENTS ARE STABLE, NOBLE &amp; EXTREMELY GOOD-HUMOURED. NO. 00 IS ALSO IN CHARGE.</div>
   </div>
 </section>
 
@@ -691,40 +713,6 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="kicker">— faculty profiles</div>
       <h2>Department Heads<br>of Our Hearts</h2>
     </div>
-
-    <!-- 01 MATHEMATICS -->
-    <article class="dept">
-      <div class="dept-side reveal">
-        <div class="dept-num">01</div>
-        <div class="mini-board dscope">
-          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path class="dp" d="M110 105 m-70 0 a70 70 0 1 0 140 0 a70 70 0 1 0 -140 0"/>
-            <path class="dp" d="M110 105 L159 56"/>
-            <path class="dp" d="M210 190 L300 190 L300 110 Z"/>
-            <text class="t" x="126" y="78" font-size="24">r</text>
-            <text class="t" x="196" y="232" font-size="20">a² + b² = c²</text>
-            <text class="t" x="24" y="226" font-size="26">π</text>
-          </svg>
-          <div class="mb-caption">fig. i — the only circle we never minded</div>
-        </div>
-      </div>
-      <div class="dept-body reveal" style="--d:.1s">
-        <div class="kicker">PERIOD 01 · MATHEMATICS</div>
-        <h3>Where every problem meets its patient match.</h3>
-        <p class="dept-copy">Some people fear numbers. Our maths class learned to befriend them instead. Every “wrong” answer was treated as a step, never a stumble — and somehow, by June, the whole class was raising its hands just for the joy of trying.</p>
-        <div class="teacher-cards">
-          <div class="tcard">
-            <div class="tcard-head">
-              <div class="avatar">BL</div>
-              <div><h4>Bhagya Lakshmi</h4><div class="trole">MATHEMATICS</div></div>
-            </div>
-            <p class="tnote">“Thank you for teaching us that every problem has a solution — and for waiting, calmly, until we found it ourselves.”</p>
-            <div class="tfield"><span>FIELD NOTE</span><p>Has never once said “this is easy” — only “you’ll get it.” Solves everything on the board except the mystery of where all our pens go.</p></div>
-            <div class="tstamp">RESPECTED · ALWAYS</div>
-          </div>
-        </div>
-      </div>
-    </article>
 
     <!-- 02 PHYSICS -->
     <article class="dept flip">
@@ -1060,6 +1048,47 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
         </div>
       </div>
     </article>
+
+    <!-- 10 LEADERSHIP -->
+    <article class="dept flip">
+      <div class="dept-side reveal">
+        <div class="dept-num">10</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <g transform="translate(140,118)">
+              <circle class="dp" r="70"/>
+              <circle class="dp" r="54"/>
+              <path class="dp" d="M0 -78 L12 -12 L78 0 L12 12 L0 78 L-12 12 L-78 0 L-12 -12 Z"/>
+              <path class="dp" d="M0 -62 L12 0 L0 12 L-12 0 Z" fill="#F6F3E9"/>
+            </g>
+            <text class="t big" x="132" y="28" font-size="22">N</text>
+            <text class="t big" x="238" y="124" font-size="22">E</text>
+            <text class="t big" x="132" y="234" font-size="22">S</text>
+            <text class="t big" x="28" y="124" font-size="22">W</text>
+            <text class="t" x="228" y="228" font-size="18">vision → action</text>
+            <circle class="dp" cx="268" cy="52" r="3" fill="#F6F3E9"/>
+            <circle class="dp" cx="52" cy="200" r="2.5" fill="#F6F3E9"/>
+          </svg>
+          <div class="mb-caption">fig. x — pointing the way forward</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 10 · LEADERSHIP</div>
+        <h3>Steady hands at the helm.</h3>
+        <p class="dept-copy">Assemblies, annual days, tough calls and quiet encouragement — the school ran on his steady rhythm. He taught us that leadership isn’t a badge you wear; it’s the example you set when nobody’s keeping score.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">DF</div>
+              <div><h4>Dermot Farrell</h4><div class="trole">LEADERSHIP</div></div>
+            </div>
+            <p class="tnote">“Thank you for leading with an open door and a steady hand — and for making every student feel like the school’s future, because we are.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Runs a whole school and still remembers first names. Believes leaders are made in classrooms, not boardrooms.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1074,13 +1103,13 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
 
     <div class="reg-panel reveal" id="reg-panel">
       <div class="reg-header">
-        <div class="rh-t"><b>GOVT. MODEL HIGH SCHOOL — CLASS: GRATITUDE (XII)</b><br>INCHARGE: MS. NISHA MATHEW · DATE: TODAY, THE DAY THAT MATTERS</div>
+        <div class="rh-t"><b>GOVT. MODEL HIGH SCHOOL — CLASS: XII-INNOVATORS</b><br>CLASS INCHARGE: MS. BHAGYA LAKSHMI · GRADE INCHARGE: MS. NISHA MATHEW</div>
         <div id="full-stamp">FULL ATTENDANCE</div>
       </div>
       <div class="reg-hint">· TAP A NAME TO MARK THEM PRESENT ·</div>
       <div id="reg-rows"></div>
-      <div class="reg-count" id="reg-count">PRESENT: 0 / 12</div>
-      <div class="reg-full-msg" id="reg-full-msg">Twelve teachers. Always present, every single day. Today, the least we could do was show up for them. — Class dismissed? Never.</div>
+      <div class="reg-count" id="reg-count">PRESENT: 0 / 13</div>
+      <div class="reg-full-msg" id="reg-full-msg">Thirteen teachers. Always present, every single day. Today, the least we could do was show up for them. — Class dismissed? Never.</div>
       <div class="reg-foot">NO TEACHER WAS EVER MARKED ABSENT FROM OUR LIVES. NOT ONCE.</div>
     </div>
   </div>
@@ -1099,7 +1128,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <div class="lsalutation">Dear Teachers,</div>
       <p>We spent years trying to find the right answers. You spent years showing us that the questions mattered more.</p>
       <p>For every extra minute after the bell. For every “try again, you’re close.” For every time you believed in us before we knew how to believe in ourselves — thank you.</p>
-      <p>To Ms. Nisha Mathew — thank you for holding Grade XII together like only you can. A class is just rooms and timetables until someone makes it a family.</p>
+      <p>To Ms. Bhagya Lakshmi — thank you for holding XII-Innovators together like only you can. A class is just rooms and timetables until someone makes it a family. And to Mr. Dermot Farrell and Ms. Nisha Mathew — thank you for guiding our school and our grade with such care.</p>
       <p>A day, a card, a whole website — none of it is truly enough. But it’s honest, it’s heartfelt, and it’s entirely in our own words. We think you’d like that.</p>
       <div class="lclose">With love and gratitude,</div>
       <div class="sig-area">
@@ -1127,8 +1156,8 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
 
 <footer>
   <div class="f-hand">No homework was assigned in the making of this page.</div>
-  <div class="f-names">NISHA MATHEW · BHAGYA LAKSHMI · MURALI KRISHNA · AHMED · SAMARANA · PRANITHA · ARCHANA · SUMA · RUPALI · RAJ AGARWAL · SANJANA · SUPRIYA</div>
-  <div class="f-small">HAPPY TEACHERS’ DAY — CLASS DISMISSED, BUT NEVER FORGOTTEN.</div>
+  <div class="f-names">BHAGYA LAKSHMI · MURALI KRISHNA · AHMED · SAMARANA · PRANITHA · ARCHANA · SUMA · RUPALI · RAJ AGARWAL · SANJANA · SUPRIYA · DERMOT FARRELL · NISHA MATHEW</div>
+  <div class="f-small">HAPPY TEACHERS’ DAY, XII-INNOVATORS — CLASS DISMISSED, BUT NEVER FORGOTTEN.</div>
 </footer>
 
 <canvas id="confetti"></canvas>
@@ -1247,24 +1276,25 @@ function confettiLoop(){
 
 /* ---------- attendance register ---------- */
 var TEACHERS = [
-  {no:'00', name:'Nisha Mathew',   sub:'CLASS INCHARGE · XII'},
-  {no:'01', name:'Bhagya Lakshmi', sub:'MATHEMATICS'},
-  {no:'02', name:'Murali Krishna', sub:'PHYSICS'},
-  {no:'03', name:'Ahmed',          sub:'PHYSICS'},
-  {no:'04', name:'Samarana',       sub:'CHEMISTRY'},
-  {no:'05', name:'Pranitha',       sub:'CHEMISTRY'},
-  {no:'06', name:'Archana',        sub:'BIOLOGY'},
-  {no:'07', name:'Suma',           sub:'ENGLISH'},
-  {no:'08', name:'Rupali',         sub:'INFORMATICS PRACTICES'},
-  {no:'09', name:'Raj Agarwal',    sub:'ENTREPRENEURSHIP'},
-  {no:'10', name:'Sanjana',        sub:'PSYCHOLOGY'},
-  {no:'11', name:'Supriya',        sub:'PHYSICAL EDUCATION'}
+  {no:'00', name:'Bhagya Lakshmi', sub:'CLASS INCHARGE · XII-INNOVATORS', special:true},
+  {no:'01', name:'Murali Krishna', sub:'PHYSICS'},
+  {no:'02', name:'Ahmed',          sub:'PHYSICS'},
+  {no:'03', name:'Samarana',       sub:'CHEMISTRY'},
+  {no:'04', name:'Pranitha',       sub:'CHEMISTRY'},
+  {no:'05', name:'Archana',        sub:'BIOLOGY'},
+  {no:'06', name:'Suma',           sub:'ENGLISH'},
+  {no:'07', name:'Rupali',         sub:'INFORMATICS PRACTICES'},
+  {no:'08', name:'Raj Agarwal',    sub:'ENTREPRENEURSHIP'},
+  {no:'09', name:'Sanjana',        sub:'PSYCHOLOGY'},
+  {no:'10', name:'Supriya',        sub:'PHYSICAL EDUCATION'},
+  {no:'11', name:'Dermot Farrell', sub:'LEADERSHIP', special:true},
+  {no:'12', name:'Nisha Mathew',   sub:'INCHARGE · GRADE XII', special:true}
 ];
 var rowsEl = $('#reg-rows');
 TEACHERS.forEach(function(t){
   var b = document.createElement('button');
   b.type = 'button';
-  b.className = 'reg-row';
+  b.className = 'reg-row' + (t.special ? ' special' : '');
   b.innerHTML =
     '<span class="rno">' + t.no + '</span>' +
     '<span class="rname">' + t.name + '</span>' +
