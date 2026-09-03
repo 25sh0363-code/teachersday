@@ -13,13 +13,13 @@
   --board:#26493A; --board-dark:#1C3A2D; --chalk:#F6F3E9;
   --wood:#6B4A2C; --wood-dark:#4E361F;
   --red:#C34A36; --green:#2F7A5B; --brass:#A9761F; --graphite:#4A5268;
+  --indigo:#3E5C76; --sienna:#B0562F; --plum:#6B4E71; --maroon:#7A2E2E;
   --mono:'Space Mono',monospace; --serif:'Fraunces',serif; --hand:'Caveat',cursive;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{background:var(--paper);color:var(--ink);font-family:var(--serif);overflow-x:hidden}
 ::selection{background:var(--board);color:var(--chalk)}
-/* paper grain over everything */
 body::after{content:"";position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
@@ -196,13 +196,13 @@ h1 .sp{display:inline-block;width:.32em}
   transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;white-space:nowrap}
 #full-stamp.show{opacity:1;transform:rotate(-8deg) scale(1)}
 .reg-hint{padding:12px 24px 4px 66px;font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--ink-soft)}
-.reg-row{display:grid;grid-template-columns:40px 1fr 140px 168px;align-items:center;width:100%;text-align:left;
+.reg-row{display:grid;grid-template-columns:40px 1fr 180px 168px;align-items:center;width:100%;text-align:left;
   padding:15px 20px 15px 66px;background:none;border:none;border-bottom:1px dashed rgba(28,23,16,.28);cursor:pointer;transition:background .2s}
 .reg-row:hover{background:rgba(28,23,16,.04)}
 .reg-row:last-of-type{border-bottom:none}
 .rno{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
 .rname{font-weight:600;font-size:1.15rem}
-.rsub{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
+.rsub{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft);white-space:nowrap}
 .rstatus{display:flex;align-items:center;justify-content:flex-end;gap:10px}
 .await{font-family:var(--mono);font-size:12px;opacity:.35}
 .tick{width:20px;height:20px;color:var(--green);opacity:0;transform:scale(.4);transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
@@ -217,7 +217,7 @@ h1 .sp{display:inline-block;width:.32em}
 .reg-count{padding:18px 24px 8px 66px;font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--ink)}
 .reg-full-msg{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .5s;padding:0 24px 0 66px;
   font-family:var(--hand);font-size:1.45rem;line-height:1.35;color:var(--green)}
-.reg-full-msg.show{max-height:140px;opacity:1;padding-bottom:26px}
+.reg-full-msg.show{max-height:180px;opacity:1;padding-bottom:26px}
 .reg-foot{padding:6px 24px 22px 66px;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--ink-soft)}
 @media(max-width:640px){.reg-row{grid-template-columns:34px 1fr auto;padding-left:58px}.rsub{display:none}
   .reg-header,.reg-hint,.reg-count,.reg-full-msg,.reg-foot{padding-left:58px}}
@@ -304,6 +304,10 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <div class="formula" style="top:9%;right:11%;--fr:-3deg;--dur:7.5s">Na + Cl → NaCl</div>
     <div class="formula" style="bottom:26%;right:9%;--fr:5deg;--dur:6s">9.8 m/s²</div>
     <div class="formula" style="top:46%;left:12%;--fr:-4deg;--dur:10s">“Read. Dream. Repeat.”</div>
+    <div class="formula" style="top:31%;left:3.5%;--fr:3deg;--dur:9.5s">while(true){ learn(); }</div>
+    <div class="formula" style="bottom:44%;right:4%;--fr:-4deg;--dur:8s">ROI = Gratitude²</div>
+    <div class="formula" style="top:41%;right:11%;--fr:-3deg;--dur:7s">mind &gt; matter</div>
+    <div class="formula" style="bottom:13%;left:5%;--fr:4deg;--dur:7.5s">laps: ∞</div>
 
     <div class="board-inner">
       <div class="board-topline">CLASSROOM 12-B &nbsp;·&nbsp; PERIOD: GRATITUDE &nbsp;·&nbsp; NO HOMEWORK TODAY</div>
@@ -311,7 +315,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
         <span class="small">Happy</span>
         <span class="big">Teachers’ Day</span>
       </h1>
-      <p class="board-sub">To the six people who never gave up on us — even on the days we gave up on ourselves.</p>
+      <p class="board-sub">To the ten people who never gave up on us — even on the days we gave up on ourselves.</p>
       <div class="hint"><i data-lucide="pencil-line"></i>PSST — PICK A CHALK FROM THE TRAY &amp; ACTUALLY WRITE ON THIS BOARD</div>
     </div>
 
@@ -336,6 +340,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <span class="mq-hand">धन्यवाद</span><i data-lucide="sparkles"></i>
     <span class="mq-mono">YOU SHAPED US</span><i data-lucide="sparkles"></i>
     <span class="mq-hand">our favourite period was always yours</span><i data-lucide="sparkles"></i>
+    <span class="mq-mono">10 TEACHERS · ONE HEART</span><i data-lucide="sparkles"></i>
     <span class="mq-mono">GRATITUDE LEVEL: 100%</span><i data-lucide="sparkles"></i>
   </div>
 </div>
@@ -349,7 +354,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       <path class="dp" d="M4 9 C 30 2, 55 13, 82 8 S 135 3, 162 9 S 205 12, 216 6" fill="none" stroke="#C34A36" stroke-width="3" stroke-linecap="round"/>
     </svg>
     <p class="lead">Patience. Second chances. The quiet belief that we could do better — and the stubbornness to stay in the room until we did. Nobody graded them on it, but our teachers taught these every single day. This page is our homework, handed in with love.</p>
-    <div class="stat-line">6 TEACHERS &nbsp;·&nbsp; 4 SUBJECTS &nbsp;·&nbsp; <b>∞ PATIENCE</b> &nbsp;·&nbsp; 0 LATE-GRADING EXCUSES</div>
+    <div class="stat-line">10 TEACHERS &nbsp;·&nbsp; 8 SUBJECTS &nbsp;·&nbsp; <b>∞ PATIENCE</b> &nbsp;·&nbsp; 0 LATE-GRADING EXCUSES</div>
   </div>
   <div class="margin-note" aria-hidden="true">checked ✓<small>— very true, see me after class</small></div>
 </section>
@@ -360,7 +365,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
     <div class="elements-head reveal">
       <div class="kicker">— the periodic table, class edition</div>
       <h2>The Elements of Our Classroom</h2>
-      <p class="elements-sub">Six essential elements. Perfectly stable under pressure, highly reactive to curiosity, and found in abundance in every period we shared. <strong>Click any element</strong> to read the bond it shares with us.</p>
+      <p class="elements-sub">Ten essential elements. Perfectly stable under pressure, highly reactive to curiosity, and found in abundance in every period we shared. <strong>Click any element</strong> to read the bond it shares with us.</p>
     </div>
 
     <div class="element-field">
@@ -483,8 +488,88 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
           </div>
         </div>
       </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-1.8deg;--dy:14px;--acc:#3E5C76;--d:.12s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 07</span><span>compiles: always</span></div>
+            <div class="ec-symbol">Rp</div>
+            <div class="ec-elname">Rupalium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Rupali</div>
+            <span class="ec-chip">INFORMATICS PRACTICES</span>
+            <div class="ec-prop">“Debugs our code — and calms our pre-practical panic.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 07 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for teaching us that every error is just information — read it, learn from it, run again. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:2.2deg;--dy:0px;--acc:#B0562F;--d:.2s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 08</span><span>net worth: priceless</span></div>
+            <div class="ec-symbol">Rj</div>
+            <div class="ec-elname">Rajium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Raj Agarwal</div>
+            <span class="ec-chip">ENTREPRENEURSHIP</span>
+            <div class="ec-prop">“Turns wild ideas into plans — and ‘what if’ into ‘why not’.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 08 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for teaching us that failure is just data, and every enterprise begins with one brave question. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:-2.4deg;--dy:20px;--acc:#6B4E71;--d:.28s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 09</span><span>state: deeply mindful</span></div>
+            <div class="ec-symbol">Sj</div>
+            <div class="ec-elname">Sanjanium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Sanjana</div>
+            <span class="ec-chip">PSYCHOLOGY</span>
+            <div class="ec-prop">“Listens twice as much as she speaks. That’s the method.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 09 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for teaching us to understand minds — starting with our own — and for always keeping your door open. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-card reveal" role="button" tabindex="0" style="--rot:1.2deg;--dy:6px;--acc:#7A2E2E;--d:.34s">
+        <div class="ec-inner">
+          <div class="ec-face ec-front">
+            <div class="ec-top"><span>No. 10</span><span>energy: renewable</span></div>
+            <div class="ec-symbol">Sp</div>
+            <div class="ec-elname">Suprium</div>
+            <hr class="ec-div">
+            <div class="ec-person">Supriya</div>
+            <span class="ec-chip">PHYSICAL EDUCATION</span>
+            <div class="ec-prop">“Counts our laps, never our excuses.”</div>
+            <div class="ec-flip"><i data-lucide="repeat"></i>TAP TO FLIP</div>
+          </div>
+          <div class="ec-face ec-back">
+            <div class="eb-top">ELEMENT No. 10 — CERTIFIED ESSENTIAL</div>
+            <div class="ec-msg">Thank you for teaching us that showing up is half the win — and for cheering loudest at our slowest mile. <i data-lucide="heart"></i></div>
+            <div class="eb-bond">BOND STRENGTH: UNBREAKABLE</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="field-note reveal">ALL ELEMENTS LISTED HERE ARE STABLE, NOBLE, AND EXTREMELY GOOD-HUMOURED.</div>
+    <div class="field-note reveal">ALL TEN ELEMENTS LISTED HERE ARE STABLE, NOBLE, AND EXTREMELY GOOD-HUMOURED.</div>
   </div>
 </section>
 
@@ -666,6 +751,159 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
         </div>
       </div>
     </article>
+
+    <!-- 05 INFORMATICS PRACTICES -->
+    <article class="dept">
+      <div class="dept-side reveal">
+        <div class="dept-num">05</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect class="dp" x="70" y="45" width="180" height="115" rx="8"/>
+            <path class="dp" d="M140 160 L126 184 M160 160 L174 184 M108 190 L212 190"/>
+            <path class="dp" d="M128 85 L108 102 L128 119"/>
+            <path class="dp" d="M192 85 L212 102 L192 119"/>
+            <path class="dp" d="M170 78 L150 126"/>
+            <path class="dp" d="M216 142 C 207 135 209 124 216 129 C 223 124 225 135 216 142 Z"/>
+            <text class="t" x="80" y="68" font-size="13">1 0 1 1 0</text>
+            <text class="t" x="94" y="146" font-size="14">hello, world!</text>
+            <circle class="dp" cx="34" cy="212" r="3" fill="#F6F3E9"/>
+            <circle class="dp" cx="288" cy="226" r="3" fill="#F6F3E9"/>
+          </svg>
+          <div class="mb-caption">fig. v — compiled with care</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 05 · INFORMATICS PRACTICES</div>
+        <h3>Writing code — and character.</h3>
+        <p class="dept-copy">Syntax on Monday, logic for life. They taught us that a program — like a person — is just a series of honest attempts, debugged with patience until it finally runs.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">RU</div>
+              <div><h4>Rupali</h4><div class="trole">INFORMATICS PRACTICES</div></div>
+            </div>
+            <p class="tnote">“Thank you for teaching us that every error message is a hint in disguise — and for never once losing patience with our semicolons.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Can spot a missing bracket from the back row. Makes logic feel like a superpower, not a syllabus.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 ENTREPRENEURSHIP -->
+    <article class="dept flip">
+      <div class="dept-side reveal">
+        <div class="dept-num">06</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle class="dp" cx="78" cy="86" r="22"/>
+            <path class="dp" d="M70 94 Q78 82 86 94"/>
+            <path class="dp" d="M68 110 L88 110 M72 118 L84 118"/>
+            <path class="dp" d="M78 56 L78 46 M50 70 L42 62 M106 70 L114 62"/>
+            <path class="dp" d="M120 205 L292 205 M120 205 L120 95"/>
+            <path class="dp" d="M292 205 L284 199 M292 205 L284 211 M120 95 L114 103 M120 95 L126 103"/>
+            <path class="dp" d="M134 190 L168 160 L198 174 L234 124 L260 138 L284 96"/>
+            <path class="dp" d="M284 96 L270 98 M284 96 L280 110"/>
+            <text class="t" x="148" y="56" font-size="19">idea → empire</text>
+            <text class="t" x="126" y="228" font-size="14">day one</text>
+            <text class="t" x="238" y="228" font-size="14">someday</text>
+          </svg>
+          <div class="mb-caption">fig. vi — returns on gratitude</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 06 · ENTREPRENEURSHIP</div>
+        <h3>Turning ideas into enterprises.</h3>
+        <p class="dept-copy">Every pitch started shaky and ended standing taller. They taught us to budget our courage, invest in our ideas, and never sign a deal with self-doubt.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">RA</div>
+              <div><h4>Raj Agarwal</h4><div class="trole">ENTREPRENEURSHIP</div></div>
+            </div>
+            <p class="tnote">“Thank you for teaching us that failure is just data — and that every great enterprise begins with one brave question.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Reads balance sheets and body language with equal ease. His favourite ROI? Return on Imagination.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 07 PSYCHOLOGY -->
+    <article class="dept">
+      <div class="dept-side reveal">
+        <div class="dept-num">07</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="dp" d="M160 62 C 186 52 210 70 204 92 C 224 98 228 124 210 136 C 220 154 204 172 184 168 C 180 186 156 192 144 178 C 124 190 100 178 102 158 C 82 156 74 132 90 120 C 78 102 92 78 114 82 C 118 64 142 54 160 62"/>
+            <path class="dp" d="M140 90 Q156 104 138 118 Q122 132 144 146"/>
+            <path class="dp" d="M176 96 Q190 110 174 124"/>
+            <path class="dp" d="M166 168 C 155 158 157 147 166 153 C 175 147 177 158 166 168 Z"/>
+            <path class="dp" d="M48 154 L92 144 M33 193 L88 172 M70 205 L96 176"/>
+            <circle class="dp" cx="44" cy="152" r="3.5" fill="#F6F3E9"/>
+            <circle class="dp" cx="30" cy="196" r="3" fill="#F6F3E9"/>
+            <circle class="dp" cx="72" cy="208" r="3" fill="#F6F3E9"/>
+            <text class="t" x="30" y="52" font-size="20">mind &gt; matter</text>
+          </svg>
+          <div class="mb-caption">fig. vii — the mind, kindly mapped</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 07 · PSYCHOLOGY</div>
+        <h3>Understanding minds, starting with our own.</h3>
+        <p class="dept-copy">No chapter was ever “just theory”. Every lesson quietly came back to the same theme — be kinder, to others and to yourself. The safest period on the timetable.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">SJ</div>
+              <div><h4>Sanjana</h4><div class="trole">PSYCHOLOGY</div></div>
+            </div>
+            <p class="tnote">“Thank you for teaching us to listen — to others, and to the quiet voice inside our own heads. You made both kinder.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Never accepted “fine” as a full answer. Gives the best advice, then the kindest silence.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 08 PHYSICAL EDUCATION -->
+    <article class="dept flip">
+      <div class="dept-side reveal">
+        <div class="dept-num">08</div>
+        <div class="mini-board dscope">
+          <svg class="chalk-draw" viewBox="0 0 320 250" fill="none" stroke="#F6F3E9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle class="dp" cx="130" cy="140" r="55"/>
+            <path class="dp" d="M120 85 L140 85 L140 68 L120 68 Z"/>
+            <path class="dp" d="M130 68 L130 56 M122 56 L138 56"/>
+            <path class="dp" d="M169 101 L179 91"/>
+            <path class="dp" d="M130 94 L130 104 M176 140 L166 140 M130 186 L130 176 M84 140 L94 140"/>
+            <path class="dp" d="M130 140 L130 112 M130 140 L150 154"/>
+            <circle class="dp" cx="130" cy="140" r="4" fill="#F6F3E9"/>
+            <path class="dp" d="M228 92 L240 124 M268 92 L256 124"/>
+            <circle class="dp" cx="248" cy="146" r="24"/>
+            <text class="t" x="241" y="155" font-size="24">1</text>
+            <text class="t" x="24" y="228" font-size="18">effort: 100%</text>
+          </svg>
+          <div class="mb-caption">fig. viii — personal bests only</div>
+        </div>
+      </div>
+      <div class="dept-body reveal" style="--d:.1s">
+        <div class="kicker">PERIOD 08 · PHYSICAL EDUCATION</div>
+        <h3>Strong bodies, stronger spirit.</h3>
+        <p class="dept-copy">The two hardest lessons in sport: keep going when it hurts, and cheer loudest for the person still behind you. Every warm-up ended warmer than it began.</p>
+        <div class="teacher-cards">
+          <div class="tcard">
+            <div class="tcard-head">
+              <div class="avatar">SP</div>
+              <div><h4>Supriya</h4><div class="trole">PHYSICAL EDUCATION</div></div>
+            </div>
+            <p class="tnote">“Thank you for teaching us that showing up is half the victory — and for cheering loudest at our slowest mile.”</p>
+            <div class="tfield"><span>FIELD NOTE</span><p>Counts laps, never excuses. Fastest whistle on campus, most patient heart in the school.</p></div>
+            <div class="tstamp">RESPECTED · ALWAYS</div>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -685,8 +923,8 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
       </div>
       <div class="reg-hint">· TAP A NAME TO MARK THEM PRESENT ·</div>
       <div id="reg-rows"></div>
-      <div class="reg-count" id="reg-count">PRESENT: 0 / 6</div>
-      <div class="reg-full-msg" id="reg-full-msg">Six teachers. Always present, every single day. Today, the least we could do was show up for them. — Class dismissed? Never.</div>
+      <div class="reg-count" id="reg-count">PRESENT: 0 / 10</div>
+      <div class="reg-full-msg" id="reg-full-msg">Ten teachers. Always present, every single day. Today, the least we could do was show up for them. — Class dismissed? Never.</div>
       <div class="reg-foot">NO TEACHER WAS EVER MARKED ABSENT FROM OUR LIVES. NOT ONCE.</div>
     </div>
   </div>
@@ -732,7 +970,7 @@ footer .f-small{margin-top:16px;font-family:var(--mono);font-size:8.5px;letter-s
 
 <footer>
   <div class="f-hand">No homework was assigned in the making of this page.</div>
-  <div class="f-names">BHAGYA LAKSHMI · MURALI KRISHNA · AHMED · SAMARANA · PRANITHA · SUMA</div>
+  <div class="f-names">BHAGYA LAKSHMI · MURALI KRISHNA · AHMED · SAMARANA · PRANITHA · SUMA · RUPALI · RAJ AGARWAL · SANJANA · SUPRIYA</div>
   <div class="f-small">HAPPY TEACHERS’ DAY — CLASS DISMISSED, BUT NEVER FORGOTTEN.</div>
 </footer>
 
@@ -857,7 +1095,11 @@ var TEACHERS = [
   {no:'03', name:'Ahmed',          sub:'PHYSICS'},
   {no:'04', name:'Samarana',       sub:'CHEMISTRY'},
   {no:'05', name:'Pranitha',       sub:'CHEMISTRY'},
-  {no:'06', name:'Suma',           sub:'ENGLISH'}
+  {no:'06', name:'Suma',           sub:'ENGLISH'},
+  {no:'07', name:'Rupali',         sub:'INFORMATICS PRACTICES'},
+  {no:'08', name:'Raj Agarwal',    sub:'ENTREPRENEURSHIP'},
+  {no:'09', name:'Sanjana',        sub:'PSYCHOLOGY'},
+  {no:'10', name:'Supriya',        sub:'PHYSICAL EDUCATION'}
 ];
 var rowsEl = $('#reg-rows');
 TEACHERS.forEach(function(t){
@@ -878,16 +1120,17 @@ TEACHERS.forEach(function(t){
 });
 var countEl = $('#reg-count'), fullMsg = $('#reg-full-msg'), fullStamp = $('#full-stamp');
 function togglePresent(row){
-  var wasFull = $$('.reg-row.present').length === 6;
+  var total = TEACHERS.length;
+  var wasFull = $$('.reg-row.present').length === total;
   row.classList.toggle('present');
   var n = $$('.reg-row.present').length;
-  countEl.textContent = 'PRESENT: ' + n + ' / 6';
-  if(n === 6 && !wasFull){
+  countEl.textContent = 'PRESENT: ' + n + ' / ' + total;
+  if(n === total && !wasFull){
     var rect = $('#reg-panel').getBoundingClientRect();
     burst(rect.left + rect.width/2, rect.top + rect.height*.35, 110, true);
     fullMsg.classList.add('show');
     fullStamp.classList.add('show');
-  } else if(n < 6){
+  } else if(n < total){
     fullMsg.classList.remove('show');
     fullStamp.classList.remove('show');
   }
@@ -1001,7 +1244,6 @@ board.addEventListener('pointerdown', function(e){
 });
 board.addEventListener('pointermove', function(e){
   var p = getPos(e);
-  /* custom chalk cursor */
   var cur = $('#chalk-cursor');
   cur.style.left = p.x + 'px'; cur.style.top = p.y + 'px';
   var overTray = e.target.closest && e.target.closest('.tray');
@@ -1050,7 +1292,6 @@ var frame = 0;
 function loop(){
   frame++;
   gctx.clearRect(0, 0, W, H);
-  /* ghost trail */
   ghostPts = ghostPts.filter(function(p){ return p.life > 0; });
   ghostPts.forEach(function(p){
     p.life -= .045;
@@ -1058,7 +1299,6 @@ function loop(){
     gctx.fillStyle = '#F6F3E9';
     gctx.beginPath(); gctx.arc(p.x, p.y, 1.5 + 3*p.life, 0, 6.29); gctx.fill();
   });
-  /* ambient dust */
   if(frame % 34 === 0 && dust.length < 40){
     dust.push({ x:Math.random()*W, y:-6, vx:(Math.random()-.5)*.25, vy:.12 + Math.random()*.22,
       life:1, size:.5 + Math.random()*1.3, color:'#F6F3E9', grav:.0008 });
