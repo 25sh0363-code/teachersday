@@ -6,6 +6,7 @@ A handcrafted interactive Teachers’ Day experience built for XII-Innovators �
 
 Instead of another static greeting, A Class Act transforms the memories, personalities, and gratitude of an entire class into an interactive experience inspired by chalkboards, notebooks, school registers, and the periodic table.
 
+
 ✨ What’s Inside
 
 * 🧑‍🏫 Interactive Chalkboard Hero — write directly on the board with selectable chalk and erase your masterpiece.
